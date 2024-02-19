@@ -1,0 +1,15 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": "explicit"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "markdownlint.config": {
+    "single-h1": false,
+    "no-inline-html": false,
+    "blanks-around-headings": false,
+    "heading-style": false,
+    "no-bare-urls": false
+  }
+}
