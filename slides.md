@@ -1,434 +1,510 @@
 ---
-theme: seriph
-background: https://source.unsplash.com/collection/94734566/1920x1080
+background: livingroom.jpg
 class: text-center
-highlighter: shiki
-lineNumbers: false
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+defaults:
+  transition: slide-left
+title: Tuning Android app performance for 150 MILLION devices
+mdc: true
 drawings:
   persist: false
-defaults:
-  foo: true
-transition: slide-left
-title: Welcome to Slidev
-mdc: true
 ---
 
-# Welcome to Slidev
+# Tuning Android app performance for 150 MILLION devices
 
-Presentation slides for developers
-
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
-
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
+by Ryan Clements, Owner of Byte Bot
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+Thank you all for coming! Let me first tell you a story...
 -->
 
 ---
-transition: fade-out
+layout: image
+image: amazon-headquarters.webp
 ---
 
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
 <!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
+After a month or so of hard study and interview prep, I walked through the doors of Amazon in June of 2022. The team I joined was in the Fire TV department responsible for producing the News app. It was built using Android and before this job, the only experience I ever had in it was via side projects. That would quickly change.
 -->
 
 ---
-layout: default
+layout: image
+image: news-tile.webp
 ---
 
-# Table of contents
-
-```html
-<Toc minDepth="1" maxDepth="1"></Toc>
-```
-
-<Toc maxDepth="1"></Toc>
-
----
-transition: slide-up
-level: 2
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
-
-## Keyboard Shortcuts
-
-|                                                    |                             |
-| -------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                | next animation or slide     |
-| <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                      | previous slide              |
-| <kbd>down</kbd>                                    | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<!--
+The News app itself was stable and making a good chunk of change through advertisements. That being said.... there was something new being planned on the horizon and that’s what my team was going to ship.
+-->
 
 ---
 layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+image: news-app-on-tv.webp
 ---
 
-# Code
+# We wanted...
 
-Use code snippets and get the highlighting directly, and even types hover![^1]
+The same app, but genericized to other types of content like
 
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
+<v-clicks>
 
-import { computed, ref } from 'vue'
+<span><carbon-basketball class="opacity-60" /> Sports</span>
 
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
+<span><carbon-video class="opacity-60" /> Trailers</span>
 
-doubled.value = 2
-```
+<span><carbon-apple class="opacity-60" /> Food</span>
 
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
+<span><carbon-plane class="opacity-60" /> Travel</span>
 
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
+<span>...</span>
 
-<!-- Footer -->
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
+</v-clicks>
 
 <!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
+We were pretty bullish with our plans. We wanted to take the business model of the News app, add enabled streaming, and genericize it for arbitrary genres, or channels as we called them. 
 -->
 
 ---
-class: px-20
+layout: image
+image: looking-up-cliff.jpg
 ---
 
-# Themes
+<!--
+With the task at hand, we were ready to build. And, build we did!
+-->
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
 ---
-theme: default
+layout: image
+image: training-montage.gif
+backgroundSize: contain
 ---
-```
 
-```yaml
+<!--
+Over the next 8 months (soon to turn 11 😬) we scaffolded, prototyped, and iterated like crazy. Around the turn of the new year of 2023, we had enough of a prototype that people could start playing around with...
+-->
+
 ---
-theme: seriph
+layout: image
+image: slow.gif
+backgroundSize: contain
 ---
-```
 
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
+<!--
+... and soon received reports of slow startup time. What happened next was the inspiration for this talk. Before I get to that though, I'd like to introduce the protagonist of the story...
+-->
 
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
+---
+layout: image-right
+image: headshot.JPEG
+---
 
+# Who is he?
+
+<v-clicks>
+
+## Ryan Clements
+
+<span>Owner of <span class="text-yellow-300">Byte Bot</span></span>
+
+<span class="text-gray-400">a software agency that helps teams ship full stack solutions to their users through <span class="text-yellow-300">training and consulting</span></span>
+
+<div class="flex flex-col gap-2 mt-20">
+  <div class="flex gap-2"><carbon-user op50 text-xl /><a href="https://ryanclements.dev" target="_blank" class="border-none! font-300">ryanclements.dev</a></div>
+  <div class="flex gap-2"><carbon-logo-github op50 text-xl/><a href="https://github.com/ryanclementshax" target="_blank" class="border-none! font-300">ryanclementshax</a></div>
+  <div class="flex gap-2"><carbon-logo-mastodon op50 text-xl /><a href="https://hachyderm.io/@ryanclementshax" target="_blank" class="border-none! font-300">ryanclementshax@hachyderm.io</a></div>
+  <div class="flex gap-2"><carbon-logo-x op50 text-xl/><a href="https://twitter.com/ryanclementshax" target="_blank" class="border-none! font-300">ryanclementshax</a></div>
+  <div class="flex gap-2"><carbon-logo-linkedin op50 text-xl/><a href="https://www.linkedin.com/in/ryan-clements-hax/" target="_blank" class="border-none! font-300">ryan-clements-hax</a></div>
 </div>
 
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
+</v-clicks>
+
+<!--
+I’m Ryan Clements, the owner of Byte Bot, a software development agency that aids software teams to ship top notch, production ready applications through consulting and trainings. I specialize in full stack development using Typescript, Nodejs, and C#. I also run a technical blog and am fairly active on social media. I’ll provide the links at the end of this talk for how we can connect.
+-->
 
 ---
-preload: false
+layout: center
 ---
 
-# Animations
+# <span class="opacity-50">Lesson #1:</span> Control your (de)serialization
 
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
+---
+layout: center
+---
 
-```html
-<div v-motion :initial="{ x: -80 }" :enter="{ x: 0 }">Slidev</div>
-```
+<span class="text-red-500 text-5xl tracking-widest uppercase">😈 Reflection 😈</span>
 
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
+---
+layout: center
+---
 
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
+# <span class="opacity-50">Lesson #2:</span> Keep your dependencies up to date
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
+---
+layout: center
+---
 
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
+# Our poor app
 
-[Learn More](https://sli.dev/guide/animations.html#motion)
+<div class="flex flex-col gap-3 text-2xl">
+
+<v-clicks>
+
+  <div class="flex items-center gap-2">🥲 Kotlin 1.3</div>
+
+  <div class="flex items-center gap-2">🤢 Android support libraries</div>
+
+  <div class="flex items-center gap-2">🤮 Gradle 3<span v-click="4" class="-ml-2">.0</span></div>
+
+</v-clicks>
 
 </div>
 
 ---
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
+layout: center
 ---
 
-# Diagrams
+# Nice things we can't have
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+<div class="flex flex-col gap-3 text-2xl">
 
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
+<v-clicks>
 
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
+  <div class="flex items-center gap-2">❌ Flow</div>
 
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
+  <div class="flex items-center gap-2">❌ androidx.anything (including compose 🥲)</div>
 
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectivness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
+  <div class="flex items-center gap-2">❌ Anything that needs androidx</div>
 
-```plantuml {scale: 0.7}
-@startuml
+  <div class="flex items-center gap-2">❌ Android Studio</div>
 
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
+  <div class="flex items-center gap-2">⚠️ Databinding</div>
 
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
+  <div class="flex items-center gap-2">⚠️ Documentation</div>
 
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
+</v-clicks>
 
 </div>
 
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
+---
+layout: center
+---
+
+# So what serializers can we use?
+
+<div class="flex flex-col gap-3 text-2xl">
+
+<v-clicks>
+
+  <div class="flex items-center gap-2">❌ kotlinx.serialization</div>
+
+  <div class="flex items-center gap-2">❌ Moshi</div>
+
+  <div class="flex items-center gap-2">✅ Jackson</div>
+
+</v-clicks>
+
+</div>
 
 ---
-src: ./pages/multiple-entries.md
-hide: false
+layout: center
+---
+
+<span class="text-red-500 text-5xl tracking-widest uppercase">😈 Reflection 😈</span>
+
+---
+layout: center
+---
+
+```java
+public class ItemSerializer extends StdSerializer<Item> {
+    
+    public ItemSerializer() {
+        this(null);
+    }
+  
+    public ItemSerializer(Class<Item> t) {
+        super(t);
+    }
+
+    @Override
+    public void serialize(
+      Item value,
+      JsonGenerator jgen,
+      SerializerProvider provider
+    ) throws IOException, JsonProcessingException {
+        jgen.writeStartObject();
+        jgen.writeNumberField("id", value.id);
+        jgen.writeStringField("itemName", value.itemName);
+        jgen.writeNumberField("owner", value.owner.id);
+        jgen.writeEndObject();
+    }
+}
+```
+
+---
+layout: center
+---
+
+```java {all|5}
+Item myItem = new Item(1, "theItem", new User(2, "theUser"));
+ObjectMapper mapper = new ObjectMapper();
+
+SimpleModule module = new SimpleModule();
+module.addSerializer(Item.class, new ItemSerializer());
+mapper.registerModule(module);
+
+String serialized = mapper.writeValueAsString(myItem);
+```
+
+---
+layout: center
+---
+
+# <span class="opacity-50">Lesson #3:</span> Use profiling tooling
+
+---
+layout: center
+---
+
+<img src="android-performance-webpage.png"  class="h-100 rounded ma" alt="android performance webpage" />
+
+---
+layout: center
+---
+
+<img src="profiler-screenshot.png"  class="h-100 rounded ma" alt="screenshot of profiler" />
+
+---
+layout: center
+---
+
+# <span class="opacity-50">Lesson #4:</span> The startup path is sacred
+
+---
+layout: image
+image: android-lifecycle-chart-simple.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: android-lifecycle-chart.png
+backgroundSize: contain
 ---
 
 ---
 layout: center
-class: text-center
 ---
 
-# Learn More
+```kotlin {all|2-7|10-15|16-17|18-21|22-24|25}
+class MyApplication : Application() {
+    // Initialize DI
+    val taskRepository: TasksRepository
+        get() = ServiceLocator.provideTasksRepository(this)
+    val appComponent: AppComponent by lazy {
+        DaggerAppComponent.factory().create(applicationContext)
+    }
+    override fun onCreate() {
+        super.onCreate()
+        // Initializing logging
+        if (BuildConfig.DEBUG) {
+          Timber.plant(DebugTree());
+        } else {
+          Timber.plant(CrashReportingTree());
+        }
+        // Inflating views
+        setContentView(R.layout.main);
+        // Registering broadcast receivers
+        val filter = IntentFilter();
+        intentFilter.addAction(packageName + "android.net.conn.CONNECTIVITY_CHANGE");
+        registerReceiver(MyReceiver(), filter);
+        // Kicking off initial tasks
+        taskRepository.fetchInitialData();
+        appComponent.scheduler.queueBackgroundTasks();
+        // ... and so on ...
+    }
+}
+```
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+---
+---
+
+# Beware of ContentProviders
+
+ContentProviders run before other code during startup.
+
+Look through your app's merged `AndroidManifest.xml` for lines like
+
+```xml
+<provider
+    android:name="androidx.startup.InitializationProvider"
+    android:authorities="${applicationId}.androidx-startup"
+    android:exported="false"
+    tools:node="merge">
+    <!-- This entry makes ExampleLoggerInitializer discoverable. -->
+    <meta-data android:name="com.example.ExampleLoggerInitializer"
+          android:value="androidx.startup" />
+</provider>
+```
+
+---
+layout: center
+---
+
+```java {all|17}
+// http://tinyurl.com/5n78k6cp
+public class InitializationProvider extends ContentProvider {
+    @Override
+    public final boolean onCreate() {
+        Context context = getContext();
+        if (context != null) {
+            // Many Initializer's expect the `applicationContext` to be non-null. This
+            // typically happens when `android:sharedUid` is used. In such cases, we postpone
+            // initialization altogether, and rely on lazy init.
+            // More context: b/196959015
+            Context applicationContext = context.getApplicationContext();
+            if (applicationContext != null) {
+                // Pass the class context so the right metadata can be read.
+                // This is especially important in the context of apps that want to use
+                // InitializationProvider in multiple processes.
+                // b/183136596#comment18
+                AppInitializer.getInstance(context).discoverAndInitialize(getClass());
+            } else {
+                StartupLogger.w("Deferring initialization because `applicationContext` is null.");
+            }
+        } else {
+            throw new StartupException("Context cannot be null");
+        }
+        return true;
+    }
+    
+    // ...
+}
+```
+
+---
+layout: center
+---
+
+# <span class="opacity-50">Lesson #5:</span> Define what <span class="italic">"fully loaded"</span> means
+
+<div>
+<span class="text-center" v-click><span class="text-red-500 text-xl opacity-100">Aggressively</span> defer everything else</span>
+</div>
+
+---
+---
+
+# 1000 foot view of the app
+
+<v-clicks>
+
+1. Create a separate app per genre ❌
+
+2. Rewrite the existing app ❌
+
+3. Create a new app that had its UI configured from the backend ✅
+
+</v-clicks>
+
+<v-clicks>
+
+...but it has to be Trojan horse'd into the News app's apk... 🙃
+
+<img
+  class="w-50"
+  src="thumbs-up.jpg"
+  alt="" />
+
+</v-clicks>
+
+<!--
+Before we get into performance optimizations, let’s zoom into the architecture of the app. Because we wanted to have the app be as generic as possible and make changes to the UI without having to do another OTA, a very expensive, time consuming process, we implemented a pattern called server driven UI or SDUI.
+
+This is a pattern where the server sends down a description of the UI tree to create, and the app dumbly renders it; thereby allowing UI changes to be a server redeployment, not an app redeployment. Fun fact! We aren’t the only ones doing this, Airbnb is another company doing the same thing. Have you used Amazon Luna? They use it too, so this isn’t a new solution.
+
+The reason why I bring this up is because to make this pattern practical, you need to introduce a cache on the app so it doesn’t need to refetch the UI definition every time it starts up. The workflow looks like this.
+
+Instead of 20 apps each for a different genre, we would have one app we could deliver content to and add content to it declaratively by tweaking backend configuration, as opposed to the OTA route we took for the News app.
+-->
+
+---
+---
+
+# Behold! It's technically functional
+
+Here is a rough architecture of the app.
+
+Old parts in <span class="text-amber-700">orange</span>
+
+New parts in <span class="text-green-600">green</span>
+
+<v-click>
+
+Ugly parts in <span class="text-red-400">red</span> <span class="text-2xl">🤫</span>
+
+<Arrow x1="700" y1="300" x2="800" y2="300" class="z-10 text-red-500" />
+
+</v-click>
+
+<span class="absolute top-65 left-125 text-[200px] z-10" v-click>👋🏼</span>
+
+![app architecture](app-architecture.png){.absolute.h-110.right-5.top-15.z-0}
+
+<!--
+Oh, and one more complication. We couldn’t create a new apk. We had to trojan horse the new app within the News app for a variety of reasons, the most important of which was it allowed us to deploy quicker and benefit from being preinstalled on devices.
+-->
+
+---
+layout: image-left
+image: playback-page.jpg
+backgroundSize: contain
+---
+
+# Playback page
+
+Fully loaded = first video frame rendered
+
+<v-clicks>
+
+1. Instantiate `NewsApplication`
+1. Parse intent, determine experience to start
+1. Start `FireChannelsActivity`
+1. Instantiate minimal dependency graph
+1. Fetch initial data
+1. Determine the page to load
+1. Inflate view and place the fragment
+1. Load video player
+1. <span class="text-green-500">Play video</span> <span v-click="10">👈🏼 <span class="opacity-50">// We need to get here</span></span>
+
+</v-clicks>
+
+---
+layout: image-left
+image: playback-page.jpg
+backgroundSize: contain
+---
+
+# What were we actually doing?
+
+<v-clicks>
+
+1. Instantiate `NewsApplication`
+1. <span class="text-red-500">Instantiate dependency graph <span class="italic"> for everything</span></span>
+1. <span class="text-red-500">Start background processes <span class="italic"> for everything</span></span>
+1. Parse intent, determine experience to start
+1. Start `FireChannelsActivity`
+1. Instantiate dependency graph <span class="italic text-red-500"> for everything</span>
+1. Fetch initial data
+1. <span class="text-red-500">Do cache maintenance</span>
+1. Determine the page to load
+1. Place the fragment
+1. Load video player
+1. <span class="text-green-500">Play video</span> <span v-click="10">👈🏼 <span class="opacity-50">// We need to get here</span></span>
+
+</v-clicks>
+
+---
+layout: center
+---
+
+# <span class="opacity-50">Lesson #6:</span> Dependency injection

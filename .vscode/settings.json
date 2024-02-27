@@ -10,6 +10,8 @@
     "no-inline-html": false,
     "blanks-around-headings": false,
     "heading-style": false,
-    "no-bare-urls": false
+    "no-bare-urls": false,
+    "no-duplicate-heading": false,
+    "no-trailing-punctuation": false
   }
 }
