@@ -12,5 +12,8 @@
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "vue": "^3.4.19"
+  },
+  "devDependencies": {
+    "@unocss/transformer-directives": "^0.58.5"
   }
 }
