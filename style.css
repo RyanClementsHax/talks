@@ -23,8 +23,13 @@ h1,
   @apply flex flex-col gap-3 text-2xl;
 }
 
-img.focus {
-  @apply h-100 rounded ma;
+img {
+  &.focus {
+    @apply h-100 rounded ma;
+  }
+  &.logo {
+    @apply h-10 w-10;
+  }
 }
 
 .blog-card {

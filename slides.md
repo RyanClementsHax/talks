@@ -37,18 +37,22 @@ image: news-tile.webp
 ---
 
 <!--
-The News app itself was stable and making a good chunk of change through advertisements. That being said.... there was something new being planned on the horizon and that’s what my team was going to ship.
-
-- Stable
-- Making money
-- New, exciting thing on horizon
-- That's what I was going to help with
+The News app itself was stable and making a good chunk of change through advertisements.
 -->
 
 ---
 layout: image
 image: firetv-news.jpg
 ---
+
+<!--
+That being said.... there was something new being planned on the horizon and that’s what my team was going to ship.
+
+- Stable
+- Making money
+- New, exciting thing on horizon
+- That's what I was going to help with
+-->
 
 ---
 layout: image-right
@@ -105,6 +109,8 @@ backgroundSize: contain
 
 <!--
 ... and soon received reports of slow startup time. What happened next was the inspiration for this talk. Before I get to that though, I'd like to introduce the protagonist of the story...
+
+- Slow startup times upwards of 40 seconds! The bar was 2 seconds.....
 -->
 
 ---
@@ -120,7 +126,29 @@ image: headshot.JPEG
 
 <span class="opacity-80">a software agency that helps teams ship full stack solutions to their users through</span> <span class="text-yellow-400">training and consulting</span> 🚀
 
-<div class="flex flex-col gap-2 mt-40">
+<div class="flex gap-2">
+  <img src="tech-logos/react-logo.svg" alt="react" class="logo" />
+  <img src="tech-logos/nextjs-logo.svg" alt="nextjs" class="logo" />
+  <img src="tech-logos/vue-logo.svg" alt="vue" class="logo" />
+  <img src="tech-logos/nuxt-logo.svg" alt="nuxt" class="logo" />
+  <img src="tech-logos/typescript-logo.svg" alt="typescript" class="logo" />
+  <img src="tech-logos/javascript-logo.svg" alt="javascript" class="logo" />
+</div>
+
+<div class="flex gap-2 mt-2">
+  <img src="tech-logos/node-logo.svg" alt="node" class="logo" />
+  <img src="tech-logos/deno-logo.svg" alt="deno" class="logo" />
+  <img src="tech-logos/csharp-logo.svg" alt="csharp" class="logo" />
+  <img src="tech-logos/aspnet-core-logo.svg" alt="aspnet core" class="logo" />
+  <img src="tech-logos/postgres-logo.svg" alt="postgres" class="logo" />
+</div>
+
+<div class="flex gap-2 mt-2">
+  <img src="tech-logos/aws-logo.svg" alt="aws" class="logo" />
+  <img src="tech-logos/azure-logo.svg" alt="azure" class="logo" />
+</div>
+
+<div class="flex flex-col gap-2 mt-5">
 
 <div>📲 calendly.com/byte-bot</div>
 <div>📧 info@bytebot.io</div>
@@ -133,6 +161,8 @@ image: headshot.JPEG
 
 <!--
 I’m Ryan Clements, the owner of Byte Bot, a software development agency that aids software teams to ship full stack solutions through consulting and trainings. I specialize in full stack development using Typescript, Nodejs, and C#. I also run a technical blog and am fairly active on social media. I’ll provide the links at the end of this talk for how we can connect.
+
+- One of the things we do is help backend developers with the frontends that frustrate them!
 
 - Owner of Byte Bot
 - I help software teams ship full stack solutions using Typescript, Node.js, and C#, through consulting and training
@@ -187,6 +217,59 @@ Jackson works just fine on the server, but in a constrained environment where th
 layout: center
 ---
 
+```java
+public class ItemSerializer extends StdSerializer<Item> {
+    
+    public ItemSerializer() {
+        this(null);
+    }
+  
+    public ItemSerializer(Class<Item> t) {
+        super(t);
+    }
+
+    @Override
+    public void serialize(
+      Item value,
+      JsonGenerator jgen,
+      SerializerProvider provider
+    ) throws IOException, JsonProcessingException {
+        jgen.writeStartObject();
+        jgen.writeNumberField("id", value.id);
+        jgen.writeStringField("itemName", value.itemName);
+        jgen.writeNumberField("owner", value.owner.id);
+        jgen.writeEndObject();
+    }
+}
+```
+
+---
+layout: center
+---
+
+```java {all|5}
+Item myItem = new Item(1, "theItem", new User(2, "theUser"));
+ObjectMapper mapper = new ObjectMapper();
+
+SimpleModule module = new SimpleModule();
+module.addSerializer(Item.class, new ItemSerializer());
+mapper.registerModule(module);
+
+String serialized = mapper.writeValueAsString(myItem);
+```
+
+<!--
+At this point the performance work was handed off to me and I wasn’t about to be defeated. I was determined to get the startup time within tolerance in time for the launch. Our problems weren’t new and there wasn’t anything special that this app did, so I turned to the wisdom of the internet on techniques other people turned to.
+
+- Work was handed to me
+- I needed to get startup time within tolerance for launch
+- I turned to the internet for wisdom
+-->
+
+---
+layout: center
+---
+
 <span class="title large">50%!</span>
 
 ---
@@ -203,6 +286,70 @@ Well that app’s dependencies were circa 2017-2019 and hadn’t been upgraded s
 - You're at the edge of your seat
 - Our app was vacuum sealed in 2017-2019 (up to 5yo)
 - Not everything worked in Amazon
+-->
+---
+---
+
+# 1000 foot view of the app
+
+<v-clicks>
+
+1. Create a separate app per genre ❌
+
+2. Rewrite the existing app ❌
+
+3. Create a new app that had its UI configured from the backend ✅
+
+</v-clicks>
+
+<v-clicks>
+
+...but it has to be Trojan horse'd into the News app's apk... 🙃
+
+<img
+  class="w-50"
+  src="thumbs-up.jpg"
+  alt="" />
+
+</v-clicks>
+
+<!--
+Before we get into more performance optimizations, let’s zoom into the architecture of the app. Because we wanted to have the app be as generic as possible and make changes to the UI without having to do another OTA, a very expensive, time consuming process, we implemented a pattern called server driven UI or SDUI.
+
+This is a pattern where the server sends down a description of the UI tree to create, and the app dumbly renders it; thereby allowing UI changes to be a server redeployment, not an app redeployment. Fun fact! We aren’t the only ones doing this, Airbnb is another company doing the same thing. Have you used Amazon Luna? They use it too, so this isn’t a new solution.
+
+The reason why I bring this up is because to make this pattern practical, you need to introduce a cache on the app so it doesn’t need to refetch the UI definition every time it starts up. The workflow looks like this.
+
+Instead of 20 apps each for a different genre, we would have one app we could deliver content to and add content to it declaratively by tweaking backend configuration, as opposed to the OTA route we took for the News app.
+
+- We can do this because we own the App Store
+-->
+
+---
+---
+
+# Behold! It's technically functional
+
+Here is a rough architecture of the app.
+
+Old parts in <span class="text-amber-700">orange</span>
+
+New parts in <span class="text-green-600">green</span>
+
+<v-click>
+
+Ugly parts in <span class="text-red-400">red</span> <span class="text-xl">🤫</span>
+
+<Arrow x1="700" y1="300" x2="800" y2="300" class="z-10 text-red-500" />
+
+</v-click>
+
+<span class="absolute top-65 left-125 text-[200px] z-10" v-click>👋🏼</span>
+
+![app architecture](app-architecture.png){.absolute.h-110.right-5.top-15.z-0}
+
+<!--
+Oh, and one more complication. We couldn’t create a new apk. We had to trojan horse the new app within the News app for a variety of reasons, the most important of which was it allowed us to deploy quicker and benefit from being preinstalled on devices.
 -->
 
 ---
@@ -267,59 +414,6 @@ layout: center
 ---
 
 <span class="scary">😈 Reflection 😈</span>
-
----
-layout: center
----
-
-```java
-public class ItemSerializer extends StdSerializer<Item> {
-    
-    public ItemSerializer() {
-        this(null);
-    }
-  
-    public ItemSerializer(Class<Item> t) {
-        super(t);
-    }
-
-    @Override
-    public void serialize(
-      Item value,
-      JsonGenerator jgen,
-      SerializerProvider provider
-    ) throws IOException, JsonProcessingException {
-        jgen.writeStartObject();
-        jgen.writeNumberField("id", value.id);
-        jgen.writeStringField("itemName", value.itemName);
-        jgen.writeNumberField("owner", value.owner.id);
-        jgen.writeEndObject();
-    }
-}
-```
-
----
-layout: center
----
-
-```java {all|5}
-Item myItem = new Item(1, "theItem", new User(2, "theUser"));
-ObjectMapper mapper = new ObjectMapper();
-
-SimpleModule module = new SimpleModule();
-module.addSerializer(Item.class, new ItemSerializer());
-mapper.registerModule(module);
-
-String serialized = mapper.writeValueAsString(myItem);
-```
-
-<!--
-At this point the performance work was handed off to me and I wasn’t about to be defeated. I was determined to get the startup time within tolerance in time for the launch. Our problems weren’t new and there wasn’t anything special that this app did, so I turned to the wisdom of the internet on techniques other people turned to.
-
-- Work was handed to me
-- I needed to get startup time within tolerance for launch
-- I turned to the internet for wisdom
--->
 
 ---
 layout: center
@@ -543,70 +637,6 @@ This helps focus where you need to spend your time as not all things need optimi
 -->
 
 ---
-
-# 1000 foot view of the app
-
-<v-clicks>
-
-1. Create a separate app per genre ❌
-
-2. Rewrite the existing app ❌
-
-3. Create a new app that had its UI configured from the backend ✅
-
-</v-clicks>
-
-<v-clicks>
-
-...but it has to be Trojan horse'd into the News app's apk... 🙃
-
-<img
-  class="w-50"
-  src="thumbs-up.jpg"
-  alt="" />
-
-</v-clicks>
-
-<!--
-Before we get into more performance optimizations, let’s zoom into the architecture of the app. Because we wanted to have the app be as generic as possible and make changes to the UI without having to do another OTA, a very expensive, time consuming process, we implemented a pattern called server driven UI or SDUI.
-
-This is a pattern where the server sends down a description of the UI tree to create, and the app dumbly renders it; thereby allowing UI changes to be a server redeployment, not an app redeployment. Fun fact! We aren’t the only ones doing this, Airbnb is another company doing the same thing. Have you used Amazon Luna? They use it too, so this isn’t a new solution.
-
-The reason why I bring this up is because to make this pattern practical, you need to introduce a cache on the app so it doesn’t need to refetch the UI definition every time it starts up. The workflow looks like this.
-
-Instead of 20 apps each for a different genre, we would have one app we could deliver content to and add content to it declaratively by tweaking backend configuration, as opposed to the OTA route we took for the News app.
-
-- We can do this because we own the App Store
--->
-
----
----
-
-# Behold! It's technically functional
-
-Here is a rough architecture of the app.
-
-Old parts in <span class="text-amber-700">orange</span>
-
-New parts in <span class="text-green-600">green</span>
-
-<v-click>
-
-Ugly parts in <span class="text-red-400">red</span> <span class="text-xl">🤫</span>
-
-<Arrow x1="700" y1="300" x2="800" y2="300" class="z-10 text-red-500" />
-
-</v-click>
-
-<span class="absolute top-65 left-125 text-[200px] z-10" v-click>👋🏼</span>
-
-![app architecture](app-architecture.png){.absolute.h-110.right-5.top-15.z-0}
-
-<!--
-Oh, and one more complication. We couldn’t create a new apk. We had to trojan horse the new app within the News app for a variety of reasons, the most important of which was it allowed us to deploy quicker and benefit from being preinstalled on devices.
--->
-
----
 layout: image-left
 image: playback-page.jpg
 backgroundSize: contain
@@ -806,26 +836,6 @@ One other mistake I made was not defining a clear startup time target upfront. Y
 -->
 
 ---
-layout: image
-image: benchmark-tests.png
-backgroundSize: contain
----
-
-<!--
-The more modern way of doing this is by using androidx’s macro and micro benchmark libraries. Remember how the app was stuck in 2019? This means it was stuck before androidx was created so that was off the list of runs.
--->
-
----
-layout: image
-image: benchmark-profile.png
-backgroundSize: contain
----
-
-<!--
-That being said, I still want to mention this is worth looking at for your team.
--->
-
----
 layout: center
 ---
 
@@ -858,6 +868,26 @@ class SampleStartupBenchmark {
 - Macrobenchmark works like instrumentation tests to exercise common paths
 - These are also used to create baseline profiles
     - These are files that contain AOT information so the Dalvik VM can startup the app super quickly
+-->
+
+---
+layout: image
+image: benchmark-tests.png
+backgroundSize: contain
+---
+
+<!--
+The more modern way of doing this is by using androidx’s macro and micro benchmark libraries. Remember how the app was stuck in 2019? This means it was stuck before androidx was created so that was off the list of runs.
+-->
+
+---
+layout: image
+image: benchmark-profile.png
+backgroundSize: contain
+---
+
+<!--
+That being said, I still want to mention this is worth looking at for your team.
 -->
 
 ---
