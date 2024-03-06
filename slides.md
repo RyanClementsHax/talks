@@ -1236,7 +1236,13 @@ backgroundSize: contain
 
 # <span class="title">Byte Bot</span> <span class="no-clip">helps software teams ship fullstack solutions 🚀</span>
 
-<div class="flex flex-col gap-5 text-2xl mt-40">
+<div>
+Let's chat!
+
+Also....
+</div>
+
+<div class="flex flex-col gap-5 text-2xl mt-20">
 
 <div>📲 calendly.com/byte-bot</div>
 <div>📧 info@bytebot.io</div>
