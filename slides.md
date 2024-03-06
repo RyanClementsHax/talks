@@ -148,10 +148,11 @@ image: headshot.JPEG
   <img src="tech-logos/azure-logo.svg" alt="azure" class="logo" />
 </div>
 
-<div class="flex flex-col gap-2 mt-5">
+<div class="flex flex-col gap-2">
 
 <div>📲 calendly.com/byte-bot</div>
 <div>📧 info@bytebot.io</div>
+<div>🐤 @RyanClementsHax</div>
 <div>📥 bytebot.beehiiv.com/subscribe</div>
 <div>🔗 linkedin.com/in/ryan-clements-hax</div>
 
@@ -1242,10 +1243,11 @@ Let's chat!
 Also....
 </div>
 
-<div class="flex flex-col gap-5 text-2xl mt-20">
+<div class="flex flex-col gap-5 text-2xl mt-5">
 
 <div>📲 calendly.com/byte-bot</div>
 <div>📧 info@bytebot.io</div>
+<div>🐤 @RyanClementsHax</div>
 <div>📥 bytebot.beehiiv.com/subscribe</div>
 <div>🔗 linkedin.com/in/ryan-clements-hax</div>
 
