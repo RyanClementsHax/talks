@@ -2,19 +2,14 @@
   "name": "talks",
   "type": "module",
   "private": true,
-  "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export --dark"
-  },
   "dependencies": {
-    "@slidev/cli": "^0.48.0-beta.14",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "vue": "^3.4.19"
+    "@slidev/theme-default": "0.25.0",
+    "@slidev/theme-seriph": "0.25.0",
+    "vue": "^3.4.21"
   },
   "devDependencies": {
-    "@unocss/transformer-directives": "^0.58.5",
-    "playwright-chromium": "^1.42.0"
+    "@slidev/cli": "^0.48.8",
+    "@unocss/transformer-directives": "^0.58.8",
+    "playwright-chromium": "^1.42.1"
   }
 }

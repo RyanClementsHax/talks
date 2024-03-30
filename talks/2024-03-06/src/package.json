@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export --dark --output ../slides.pdf"
+  }
+}

@@ -1,11 +1,7 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# talks
 
-To start the slide show:
+Slides &amp; code for my talks, using [Slidev](https://sli.dev).
 
-- `pnpm install`
-- `pnpm dev`
-- visit http://localhost:3030
+## 2024
 
-Edit the [slides.md](./slides.md) to see the changes.
-
-Learn more about Slidev on [documentations](https://sli.dev/).
+- [Tuning Android app performance for 150 MILLION devices](https://www.youtube.com/watch?v=TwNySRmBYe8) - Tampa Devs
