@@ -8,7 +8,7 @@
     "vue": "^3.4.21"
   },
   "devDependencies": {
-    "@slidev/cli": "^0.48.8",
+    "@slidev/cli": "0.48.0-beta.14",
     "@unocss/transformer-directives": "^0.58.8",
     "playwright-chromium": "^1.42.1"
   }
