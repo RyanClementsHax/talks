@@ -127,25 +127,25 @@ image: headshot.JPEG
 <span class="opacity-80">a software agency that helps teams ship full stack solutions to their users through</span> <span class="text-yellow-400">training and consulting</span> 🚀
 
 <div class="flex gap-2">
-  <img src="tech-logos/react-logo.svg" alt="react" class="logo" />
-  <img src="tech-logos/nextjs-logo.svg" alt="nextjs" class="logo" />
-  <img src="tech-logos/vue-logo.svg" alt="vue" class="logo" />
-  <img src="tech-logos/nuxt-logo.svg" alt="nuxt" class="logo" />
-  <img src="tech-logos/typescript-logo.svg" alt="typescript" class="logo" />
-  <img src="tech-logos/javascript-logo.svg" alt="javascript" class="logo" />
+  <img src="/tech-logos/react-logo.svg" alt="react" class="logo" />
+  <img src="/tech-logos/nextjs-logo.svg" alt="nextjs" class="logo" />
+  <img src="/tech-logos/vue-logo.svg" alt="vue" class="logo" />
+  <img src="/tech-logos/nuxt-logo.svg" alt="nuxt" class="logo" />
+  <img src="/tech-logos/typescript-logo.svg" alt="typescript" class="logo" />
+  <img src="/tech-logos/javascript-logo.svg" alt="javascript" class="logo" />
 </div>
 
 <div class="flex gap-2 mt-2">
-  <img src="tech-logos/node-logo.svg" alt="node" class="logo" />
-  <img src="tech-logos/deno-logo.svg" alt="deno" class="logo" />
-  <img src="tech-logos/csharp-logo.svg" alt="csharp" class="logo" />
-  <img src="tech-logos/aspnet-core-logo.svg" alt="aspnet core" class="logo" />
-  <img src="tech-logos/postgres-logo.svg" alt="postgres" class="logo" />
+  <img src="/tech-logos/node-logo.svg" alt="node" class="logo" />
+  <img src="/tech-logos/deno-logo.svg" alt="deno" class="logo" />
+  <img src="/tech-logos/csharp-logo.svg" alt="csharp" class="logo" />
+  <img src="/tech-logos/aspnet-core-logo.svg" alt="aspnet core" class="logo" />
+  <img src="/tech-logos/postgres-logo.svg" alt="postgres" class="logo" />
 </div>
 
 <div class="flex gap-2 mt-2">
-  <img src="tech-logos/aws-logo.svg" alt="aws" class="logo" />
-  <img src="tech-logos/azure-logo.svg" alt="azure" class="logo" />
+  <img src="/tech-logos/aws-logo.svg" alt="aws" class="logo" />
+  <img src="/tech-logos/azure-logo.svg" alt="azure" class="logo" />
 </div>
 
 <div class="flex flex-col gap-2">
@@ -309,7 +309,7 @@ Well that app’s dependencies were circa 2017-2019 and hadn’t been upgraded s
 
 <img
   class="w-50"
-  src="thumbs-up.jpg"
+  src="/thumbs-up.jpg"
   alt="" />
 
 </v-clicks>
@@ -347,7 +347,7 @@ Ugly parts in <span class="text-red-400">red</span> <span class="text-xl">🤫</
 
 <span class="absolute top-65 left-125 text-[200px] z-10" v-click>👋🏼</span>
 
-![app architecture](app-architecture.png){.absolute.h-110.right-5.top-15.z-0}
+![app architecture](/app-architecture.png){.absolute.h-110.right-5.top-15.z-0}
 
 <!--
 Oh, and one more complication. We couldn’t create a new apk. We had to trojan horse the new app within the News app for a variety of reasons, the most important of which was it allowed us to deploy quicker and benefit from being preinstalled on devices.
@@ -426,7 +426,7 @@ layout: center
 layout: center
 ---
 
-<img src="android-performance-webpage.png"  class="focus" alt="android performance webpage" />
+<img src="/android-performance-webpage.png"  class="focus" alt="android performance webpage" />
 
 <!--
 I’ve always been impressed with the quality of Android’s documentation and their section on performance met those expectations. I found there are two major tools to profile performance. The first of which is the profiler integrated into Android Studio. The second of which is a systrace + Perfetto combo.
@@ -441,7 +441,7 @@ I’ve always been impressed with the quality of Android’s documentation and t
 layout: center
 ---
 
-<img src="profiler-screenshot.png"  class="focus" alt="screenshot of profiler" />
+<img src="/profiler-screenshot.png"  class="focus" alt="screenshot of profiler" />
 
 <!--
 The main difference between the two is Android Studio has an app specific focus whereas systrace provides a system level view. The latter is a great tool, but I found all of our problems could be diagnosed with the former so I’ll only discuss that in this talk.
@@ -453,7 +453,7 @@ The main difference between the two is Android Studio has an app specific focus 
 layout: center
 ---
 
-<img src="perfetto.webp"  class="focus" alt="perfetto screenshot" />
+<img src="/perfetto.webp"  class="focus" alt="perfetto screenshot" />
 
 <!--
 I won’t dive into how to use the tool either, but suffice to say it was feature rich and showed TONS of low hanging fruit. There’s only so much timing statements can do especially as they don’t let you dive into how third party code is affecting your app. Moreover, the iteration speed is MASSIVE. Whereas for timer logs, you’d have a long cycle time of making an educated guess of where to put the logs, recompile the app, load the app onto a device/emulator, then filter the logs for the one you put (which may not even be there), a flame graph shows you that and more with ONE iteration (with some caveats we will get to later).
@@ -510,8 +510,8 @@ layout: center
 
 <div class="flex gap-10">
 
-<img src="spelunking-part-1.png"  class="blog-card" alt="spelunking post part 1" />
-<img src="spelunking-part-2.png"  class="blog-card" alt="spelunking post part 2" />
+<img src="/spelunking-part-1.png"  class="blog-card" alt="spelunking post part 1" />
+<img src="/spelunking-part-2.png"  class="blog-card" alt="spelunking post part 2" />
 
 </div>
 
@@ -1044,8 +1044,8 @@ layout: center
 
 <div class="flex gap-10">
 
-<img src="you-dont-need-mocking.png"  class="blog-card" alt="you dont need mocking post" />
-<img src="justifying-mocking.png"  class="blog-card" alt="justifying mocking post" />
+<img src="/you-dont-need-mocking.png"  class="blog-card" alt="you dont need mocking post" />
+<img src="/justifying-mocking.png"  class="blog-card" alt="justifying mocking post" />
 
 </div>
 
