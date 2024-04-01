@@ -289,7 +289,6 @@ Well that app’s dependencies were circa 2017-2019 and hadn’t been upgraded s
 - Not everything worked in Amazon
 -->
 ---
----
 
 # 1000 foot view of the app
 
@@ -326,7 +325,6 @@ Instead of 20 apps each for a different genre, we would have one app we could de
 - We can do this because we own the App Store
 -->
 
----
 ---
 
 # Behold! It's technically functional
@@ -927,7 +925,6 @@ layout: center
 With the startup step largely cleaned, next was to make the network (or cache) call as quickly as possible. This was in part as simple as moving a line of code up a few lines.
 -->
 
----
 ---
 
 <div class="mt-30">

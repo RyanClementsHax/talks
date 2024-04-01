@@ -30,6 +30,8 @@ importers:
 
   talks/2024-03-06/src: {}
 
+  talks/2024-04-06/src: {}
+
 packages:
 
   /@ampproject/remapping@2.3.0:
