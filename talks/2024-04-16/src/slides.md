@@ -62,6 +62,105 @@ image: headshot.jpg
 </v-clicks>
 
 ---
+layout: image
+image: blog-screenshot.png
+backgroundSize: contain
+transition: fade
+---
+
+---
+layout: center
+clicks: 3
+---
+
+<div class="relative h-50 w-150">
+<div
+  v-motion
+  :initial="{ y: -50 }"
+  :enter="{ x: 200, y: 0 }"
+  :click-1="{ x: 75 }"
+  class="absolute inset-0"
+>
+  <img src="/tech-logos/nextjs-logo.svg" alt="nextjs logo" class="h-50 w-50" />
+</div>
+<div
+  v-click
+  v-motion
+  :enter="{ x: 0, y: 0 }"
+  :click-1="{ x: 325 }"
+  class="absolute inset-0">
+  <img src="/tech-logos/storybook-logo.svg" alt="storybook logo" class="h-50 w-50" />
+</div>
+<div
+  v-click
+  v-motion
+  :initial="{ x: 125, y: -125, rotate: 0 }"
+  :click-2="{ y: -85 }"
+  :click-3="{ rotate: 10 }"
+  class="absolute text-[250px]">
+  {{ $clicks > 2 ? '💔' : '❤️' }}
+</div>
+</div>
+
+---
+layout: image
+image: storybook-screenshot-component.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: storybook-screenshot.png
+backgroundSize: contain
+---
+
+---
+src: ./pages/nextjs-storybook-integration.md
+---
+
+---
+layout: center
+clicks: 3
+---
+
+<h1 class="no-clip !text-[100px]">{{ feelings[$clicks] }} </h1>
+
+<script setup lang="ts">
+const feelings = ['😬', '🤔', '🤷‍♂️', '🚀']
+</script>
+
+---
+layout: image
+image: initial-release.png
+backgroundSize: contain
+---
+
+---
+
+<div class="flex justify-center w-full">
+  <Tweet id="1484910294694604807" cards="hidden" />
+</div>
+
+---
+layout: image
+image: lee-rob-issue.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: issues-floodeth.png
+---
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #1:</span> Scratch your itch
+
+---
+layout: center
+---
 
 Outline
 
@@ -118,3 +217,26 @@ Outline
 - Lesson 10: It's worth it in the end
   - https://github.com/RyanClementsHax/storybook-addon-next/issues/3
   - https://github.com/RyanClementsHax/storybook-addon-next/issues/47
+
+# <span class="no-clip">🤔</span> Got questions?
+
+---
+layout: image-left
+image: linktree-qr.png
+backgroundSize: contain
+---
+
+# Here's how we can stay in touch
+
+<div class="flex flex-col gap-5 text-2xl mt-5">
+
+<div>📲 calendly.com/byte-bot</div>
+<div>📧 info@bytebot.io</div>
+<div>📧 coaching@bytebot.io</div>
+<div>🐤 @RyanClementsHax</div>
+<div>📥 bytebot.beehiiv.com/subscribe</div>
+<div>🔗 linkedin.com/in/ryan-clements-hax</div>
+
+</div>
+
+---
