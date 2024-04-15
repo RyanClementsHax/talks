@@ -4,7 +4,7 @@ defaults:
 title: From 0 to 146k weekly downloads - lessons from accidental open source success
 mdc: true
 drawings:
-  persist: false
+  persist: true
 ---
 
 # From 0 to 146k weekly downloads
@@ -132,7 +132,6 @@ const feelings = ['😬', '🤔', '🤷‍♂️', '🚀']
 ---
 layout: image
 image: initial-release.png
-backgroundSize: contain
 ---
 
 ---
@@ -162,61 +161,257 @@ layout: center
 layout: center
 ---
 
-Outline
+# <span class="tag">Lesson #2:</span> It doesn't have to be perfect
 
-- Intro slide
-- Who I am
-- The story begins...
-  - I wanted to build a blog, but be proud about how I built it
-  - TypeScript, Next.js, tests, a11y, theme switcher, storybook
-- What Storybook and Next.js is
-- Setting up Storybook with Next.js was a MASSIVE PAIN
-  - Very little help online
-  - Needed to gather advice from 2-3 articles, sprinkle in a little bit of what works for you, and shove it in your `.storybook` folder
-- I figured I'd share my learnings by publishing a package
-  - It wasn't perfect by any means
-  - Published it to npm on Jan 20, 2022 https://github.com/RyanClementsHax/storybook-addon-next/releases/tag/v1.0.0
-  - Put it on some market places like Storybook's addon page
-- Instantly went viral
-  - Michael Shilman, one of the core Storybook maintainers, tweeted it
-  - Lee Rob, PM for Next.js wanted the official Next.js Storybook example to use my plugin
-- Issues started rolling in
-  - Oh hey! Cool! People actually like what I did!
-  - Oh crap....they really liked what I did...
-- Lesson 1: Scratch your itch
-- Lesson 2: It doesn't need to be perfect
-- The influx of issues began to show me things
-- Lesson 3: You will never be able to predict the needs of your users until you ship
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/4
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/15
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/47
-- Lesson 4: Automate EVERYTHING
-  - Not having to do things manually made it more fun to work on the project
-  - I sometimes would put off working on the project because I didn't want the drudgery of retesting the addon manually
-    - I promised support for Next.js v9+
-    - Added up to 15min of testing per change
-  - https://github.com/RyanClementsHax/storybook-addon-next/pull/148
-- Lesson 5: Get good at code spelunking
-  - https://github.com/RyanClementsHax/storybook-addon-next/blob/6fefca04a68a6aeee28847bd1e22611dc4a208a5/src/images/next-image-loader-stub.ts
-- Lesson 6: Write well
-  - https://github.com/RyanClementsHax/storybook-addon-next/blob/6fefca04a68a6aeee28847bd1e22611dc4a208a5/src/styledJsx/babel.ts#L15
-  - https://github.com/RyanClementsHax/storybook-addon-next/blob/6fefca04a68a6aeee28847bd1e22611dc4a208a5/src/css/webpack.ts#L76
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/72#issuecomment-1109093239
-- Lesson 7: Standup for yourself
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/7
-  - Give them opportunities like with CodeSandbox
-  - Say NO
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/79
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/120
-- Lesson 8: Good documentation matters
-  - https://github.com/RyanClementsHax/storybook-addon-next
-  - https://github.com/RyanClementsHax/storybook-addon-next/blob/main/MIGRATING.md
-- Lesson 9: It's ok to let go
-  - https://www.npmjs.com/package/@storybook/nextjs
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/112
-- Lesson 10: It's worth it in the end
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/3
-  - https://github.com/RyanClementsHax/storybook-addon-next/issues/47
+---
+layout: center
+---
+
+# <span class="tag">Lesson #3:</span> You will never be able to predict the needs of your users until you ship
+
+---
+layout: image
+image: styled-jsx-issue.png
+---
+
+---
+layout: image
+image: font-import-issue.png
+---
+
+---
+layout: image
+image: nextjs-runtime-issue.png
+---
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #4:</span> Automate as much as possible
+
+---
+layout: two-cols-normal-header
+clicks: 14
+---
+
+# The Maintainer's Dilema
+
+::left::
+
+## 😀 What you want to do
+
+<v-clicks>
+
+👍 Fix your own problem
+
+👍 Make meaningful contributions
+
+👍 Keep your tool stable
+
+</v-clicks>
+
+::right::
+
+## 🥲 What you have to do
+
+<v-clicks>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Testing changes</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Formatting</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Linting</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Building</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Changelogs</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Github releases</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Version management</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Publishing to NPM</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 <span :class="$clicks > 13 && 'line-through text-stone-400'">Closing stale issues</span><span v-if="$clicks > 13"> Github Actions</span>
+
+🔨 Asking for reproduction repos
+
+</v-clicks>
+
+---
+layout: center
+transition: fade
+---
+
+# <span class="tag">Lesson #5:</span> Get good at spelunking
+
+<img src="/spelunking.jpg" alt="spelunking" class="background"/>
+
+---
+layout: center
+transition: fade
+---
+
+<div class="relative h-50 w-150">
+<div
+  v-motion
+  :initial="{ y: -50 }"
+  :enter="{ x: 75, y: 0 }"
+  :click-1="{ x: 200 }"
+  class="absolute inset-0"
+>
+  <img src="/tech-logos/nextjs-logo.svg" alt="nextjs logo" class="h-50 w-50" />
+</div>
+<div
+  v-motion
+  :initial="{ y: -50 }"
+  :enter="{ x: 300, y: 0, opacity: 1 }"
+  :click-1="{ y: -50, opacity: 0 }"
+  class="absolute inset-0">
+  <img src="/tech-logos/storybook-logo.svg" alt="storybook logo" class="h-50 w-50" />
+</div>
+<div
+  v-motion
+  :initial="{ y: -100 }"
+  :enter="{ x: 125, y: -85, opacity: 1 }"
+  :click-1="{ y: -100, opacity: 0 }"
+  class="absolute text-[250px]">
+  ❤️
+</div>
+<div
+  v-click
+  v-motion
+  :initial="{ x: 250, y: -125, opacity: 0 }"
+  :click-2="{ y: 25, opacity: 1 }"
+  class="absolute text-[200px]">
+  🔍
+</div>
+</div>
+
+---
+layout: center
+---
+
+# More on my blog...
+
+<div class="flex gap-10">
+
+<img src="/spelunking-part-1.png"  class="blog-card" alt="spelunking post part 1" />
+<img src="/spelunking-part-2.png"  class="blog-card" alt="spelunking post part 2" />
+
+</div>
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #6:</span> Write well
+
+---
+layout: center
+---
+
+````md magic-move
+
+```ts
+const hasCustomBabelFile = async () => {
+  const config = await loadPartialConfigAsync({
+    // in order to load babel config, we need to give babel a file
+    // we just choose the project's package.json cuz we know it has
+    // to be present
+    // filename is resolved relative to the root (defaulted to process.cwd())
+    // https://babeljs.io/docs/en/options#filename
+    filename: './package.json'
+  })
+  return config?.babelrc || config?.config
+}
+```
+
+```ts
+/**
+ * webpack v4-v6 api
+ * https://webpack.js.org/loaders/css-loader/#url
+ * https://webpack.js.org/loaders/css-loader/#import
+ *
+ * webpack v3 api
+ * https://webpack-3.cdn.bcebos.com/loaders/css-loader/#url
+ * https://webpack-3.cdn.bcebos.com/loaders/css-loader/#import
+ */
+const getImportAndUrlCssLoaderOptions = (nextConfig: NextConfig) =>
+  isCssLoaderV6()
+    ? {
+        url: {
+          filter: getUrlResolver(nextConfig)
+        },
+        import: {
+          filter: getImportResolver(nextConfig)
+        }
+      }
+    : {
+        url: getUrlResolver(nextConfig),
+        import: getImportResolver(nextConfig)
+      }
+```
+
+````
+
+---
+layout: image
+image: descriptive-comment.png
+---
+
+---
+layout: center
+transition: none
+---
+
+# <span class="tag">Lesson #7:</span> Stand up for yourself
+
+---
+layout: image
+image: saying-no.png
+backgroundSize: contain
+transition: none
+---
+
+---
+layout: image
+image: saying-no-response.png
+---
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #8:</span> Good documentation matters
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #9:</span> It's ok to let go
+
+---
+layout: image
+image: storybook-nextjs-screenshot.png
+---
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #10:</span> It's worth it
+
+---
+layout: image
+image: its-worth-it.png
+backgroundSize: contain
+---
+
+---
+layout: center
+---
 
 # <span class="no-clip">🤔</span> Got questions?
 
