@@ -433,5 +433,3 @@ backgroundSize: contain
 <div>🔗 linkedin.com/in/ryan-clements-hax</div>
 
 </div>
-
----
