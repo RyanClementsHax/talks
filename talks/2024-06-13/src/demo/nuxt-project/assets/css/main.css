@@ -19,7 +19,7 @@ html {
 }
 
 main {
-  @apply flex items-center pt-32 flex-col w-[300px] mx-auto gap-8;
+  @apply pt-32 w-[300px] mx-auto;
 }
 
 form {
@@ -28,6 +28,10 @@ form {
 
 ul {
   @apply flex flex-col gap-2 items-start w-full;
+}
+
+article {
+  @apply flex flex-col gap-4;
 }
 
 li {

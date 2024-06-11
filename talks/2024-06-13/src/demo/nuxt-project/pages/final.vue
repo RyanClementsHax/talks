@@ -20,8 +20,15 @@ async function deleteNote(id: number) {
 </script>
 
 <template>
-  <FinalForm @submit="submit" />
-  <ul>
-    <FinalNote v-for="note of notes" :note="note" @delete="deleteNote" />
-  </ul>
+  <article>
+    <FinalForm @submit="submit" />
+    <ul>
+      <FinalNote
+        v-for="note of notes"
+        :key="note.id"
+        :note="note"
+        @delete="deleteNote"
+      />
+    </ul>
+  </article>
 </template>

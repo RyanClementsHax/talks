@@ -11,7 +11,7 @@ function submit() {
   <form @submit.prevent="submit">
     <label>
       Note
-      <input type="text" v-model="text" />
+      <input v-model="text" type="text" />
     </label>
     <button>Submit</button>
   </form>
