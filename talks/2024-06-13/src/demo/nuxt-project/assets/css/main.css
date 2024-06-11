@@ -3,7 +3,15 @@ h1 {
 }
 
 button {
-  @apply rounded-md bg-emerald-600 px-3 py-2 text-sm break-normal font-semibold text-emerald-50 shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600;
+  @apply rounded-md bg-emerald-600 px-3 py-2 text-sm break-normal font-semibold
+  text-emerald-50 shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2
+  focus-visible:outline-offset-2 focus-visible:outline-emerald-600;
+
+  &.danger {
+    @apply border border-rose-700 text-rose-600 bg-transparent focus-visible:text-rose-50
+    hover:text-rose-50 focus-visible:bg-rose-600 hover:border-rose-500 hover:bg-rose-500
+    focus-visible:outline-rose-600;
+  }
 }
 
 label {
@@ -11,7 +19,9 @@ label {
 }
 
 input {
-  @apply rounded-md shadow-sm border-0 py-1.5 px-3 bg-transparent ring-1 ring-inset text-stone-200 ring-stone-700 placeholder:text-stone-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6 outline-none;
+  @apply rounded-md shadow-sm border-0 py-1.5 px-3 bg-transparent ring-1 ring-inset
+  text-stone-200 ring-stone-700 placeholder:text-stone-400 focus:ring-2 focus:ring-inset
+  focus:ring-emerald-600 sm:text-sm sm:leading-6 outline-none;
 }
 
 html {

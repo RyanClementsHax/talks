@@ -6,6 +6,7 @@ const emit = defineEmits<{ (e: 'delete', id: number): void }>()
 
 <template>
   <li>
-    {{ note.text }}<button @click="emit('delete', note.id)">Delete</button>
+    {{ note.text
+    }}<button class="danger" @click="emit('delete', note.id)">Delete</button>
   </li>
 </template>
