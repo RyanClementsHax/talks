@@ -28,30 +28,13 @@ image: headshot.jpg
 
 <div>Ryan Clements, Owner of <span class="accent">Byte Bot</span> 🤖</div>
 
-<span class="opacity-80">a software agency that helps SaaS companies ship full stack solutions to their users through</span> <span class="accent">training and consulting</span> 🚀
+<span class="opacity-80">a software agency that helps software teams ❤️ their 🏔️ Nuxt and 🖖 Vue apps.</span>
 
-🤓 I also coach software developers!
-
-<div class="flex gap-2">
-  <img src="/tech-logos/react-logo.svg" alt="react" class="logo" />
-  <img src="/tech-logos/nextjs-logo.svg" alt="nextjs" class="logo" />
-  <img src="/tech-logos/vue-logo.svg" alt="vue" class="logo" />
-  <img src="/tech-logos/nuxt-logo.svg" alt="nuxt" class="logo" />
-  <img src="/tech-logos/typescript-logo.svg" alt="typescript" class="logo" />
-  <img src="/tech-logos/javascript-logo.svg" alt="javascript" class="logo" />
-</div>
-
-<div class="flex gap-2 mt-2">
-  <img src="/tech-logos/node-logo.svg" alt="node" class="logo" />
-  <img src="/tech-logos/deno-logo.svg" alt="deno" class="logo" />
-  <img src="/tech-logos/csharp-logo.svg" alt="csharp" class="logo" />
-  <img src="/tech-logos/aspnet-core-logo.svg" alt="aspnet core" class="logo" />
-  <img src="/tech-logos/postgres-logo.svg" alt="postgres" class="logo" />
-</div>
+In my free time I like to contribute to Nuxt! My most is mostly on prerendering.
 
 <div class="flex flex-col gap-2 mt-6">
 
-<div>📧 coaching@bytebot.io</div>
+<div>📧 info@bytebot.io</div>
 <div>🐤 @RyanClementsHax</div>
 <div>📥 bytebot.beehiiv.com/subscribe</div>
 
@@ -192,22 +175,24 @@ const counter = ref(props.count);
 
 ```vue {*|2,4,9,11,17}
 <template>
-  <div class="flex w-min border rounded-md border-main overflow-hidden">
+  <div class="flex w-min border ...">
     <button
-      class="border-r border-main p-2 font-mono hover:bg-gray-400 hover:bg-opacity-20"
+      class="border-r border-main p-2 font-mono ..."
       @click="counter -= 1"
     >
       -
     </button>
     <span class="m-auto p-2">{{ counter }}</span>
     <button
-      class="border-l border-main p-2 font-mono hover:bg-gray-400 hover:bg-opacity-20"
+      class="border-l border-main p-2 ..."
       @click="counter += 1"
     >
       +
     </button>
   </div>
-  <div v-if="counter > 10" class="text-red-500 mt-2">Counter is too high!</div>
+  <div v-if="counter > 10" class="text-red-500 mt-2">
+    Counter is too high!
+  </div>
 </template>
 ```
 ````
@@ -224,7 +209,7 @@ const counter = ref(props.count);
 layout: center
 ---
 
-# Introduction to Nuxt
+# Introduction to 🏔️ Nuxt
 
 <img src="/tech-logos/nuxt-logo.svg" alt="Nuxt logo" class="background h-100 w-100"/>
 
@@ -261,6 +246,8 @@ layout: two-cols-normal-header
 - ✅ Search Engine Optimization (SEO)
 - ✅ Layouts
 - ✅ Building
+- ✅ Modules
+- ✅ Pre-packaged utilities
 - ✅ Better developer experience
 
 </v-clicks>

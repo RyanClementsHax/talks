@@ -35,7 +35,7 @@ const props = defineProps({
     <div class="header">
       <slot />
     </div>
-    <div class="flex gap-5">
+    <div class="grid grid-cols-2 gap-5">
       <div :class="props.class">
         <slot name="left" />
       </div>
