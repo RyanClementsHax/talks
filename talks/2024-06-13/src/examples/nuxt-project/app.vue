@@ -1,5 +1,8 @@
+<script>
+import '~/assets/css/main.css'
+</script>
 <template>
-  <div>
-    <NuxtWelcome />
-  </div>
+  <main>
+    <NuxtPage />
+  </main>
 </template>

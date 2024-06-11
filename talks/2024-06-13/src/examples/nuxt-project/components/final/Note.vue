@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
-defineProps<{ note: { id: number; text: string } }>();
-const emit = defineEmits<{ (e: "delete", id: number): void }>();
+import { defineProps, defineEmits } from 'vue'
+defineProps<{ note: { id: number; text: string } }>()
+const emit = defineEmits<{ (e: 'delete', id: number): void }>()
 </script>
 
 <template>
