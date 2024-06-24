@@ -1,0 +1,13 @@
+.no-clip {
+  @apply bg-clip-none text-initial;
+}
+
+.accent {
+  @apply text-green-400;
+}
+
+img {
+  &.background {
+    @apply absolute top-0 left-0 right-0 bottom-0 m-auto -z-1 opacity-10;
+  }
+}
