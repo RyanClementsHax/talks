@@ -15,7 +15,7 @@ drawings:
 <span class="muted">by Ryan Clements, Owner of </span><span class="accent">Byte Bot</span> 🤖
 </div>
 
-<img src="/tech-logos/nuxt-logo.svg" alt="Nuxt logo" class="background"/>
+<img src="/tech-logos/mantis-logo.png" alt="mantis logo" class="background"/>
 
 ---
 layout: image-right
@@ -47,15 +47,21 @@ image: mean.jpg
 
 ---
 
+# It all started with <img src="/tech-logos/node-logo.svg" alt="Node.js logo" class="inline w-[1em] h-[1em] align-top" />...
+
 <Youtube id="LB8KwiiUGy0" class="w-full h-full"  />
 
 ---
+
+# Then came <img src="/tech-logos/typescript-logo.svg" alt="Node.js logo" class="inline w-[1em] h-[1em] align-top" />...
 
 <Youtube id="U6s2pdxebSo" class="w-full h-full"  />
 
 ---
 layout: center
 ---
+
+# Then came ESM...
 
 ```ts
 import {Component} from '@angular/core';
@@ -82,8 +88,10 @@ export class DemoComponent {
 layout: center
 ---
 
+# Then came `async`/`await`...
+
 ```ts
-// [id].get.ts
+// users/[id].get.ts
 export default defineEventHandler(async () => {
   const id = getRouterParam(event, 'id')
 
@@ -98,55 +106,104 @@ export default defineEventHandler(async () => {
 ```
 
 ---
+transition: fade
+---
 
-Fancier tools
+# And fancier tools..
 
-- Vite
-- Storybook
-- Nx
+<div class="screenshot-heap">
+<v-clicks>
+<img src="/tech-logos/nx-logo.svg" alt="nx logo" class="absolute -top-10 left-60 rotate-5 h-75" />
+<img src="/tech-logos/vite-logo.svg" alt="vite logo" class="absolute top-50 right-80 -rotate-10 h-50" />
+<img src="/tech-logos/storybook-logo.svg" alt="storybook logo" class="absolute top-25 right-20 rotate-5 h-50" />
+<img src="/tech-logos/analog-logo.svg" alt="analog logo" class="absolute top-40 left-5 -rotate-15 h-50" />
+</v-clicks>
+</div>
+
+---
+layout: image
+image: tech-logos/mantis-logo-expanded.jpeg
+---
 
 ---
 
-Framework improvements
+# Mantis breakdown
 
-- SSR/SSG
-- Analog
+<div class="content-center gap-10">
 
----
+<img src="/tech-logos/mongo-logo.svg" alt="mongo logo" class="h-20" />
+<img src="/tech-logos/analog-logo.svg" alt="analog logo" class="h-20" />
+<img src="/tech-logos/nx-logo.svg" alt="nx logo" class="h-20 scale-200 mr-2" />
+<img src="/tech-logos/tailwind-logo.svg" alt="tailwind logo" class="h-20" />
+<img src="/tech-logos/ionic-logo.svg" alt="ionic logo" class="h-20" />
+<img src="/tech-logos/storybook-logo.svg" alt="storybook logo" class="h-20" />
 
-Mantis logo
-
----
-
-Mantis breakdown
-
----
-
-Comparison table
+</div>
 
 ---
 
-Demo
+# Project goals
 
-- Show installation
+<div class="content-center">
+<div>
+<v-clicks>
+
+<div>✅ Provide full stack solution for most angular apps</div>
+<div>✅ Get started insanely quick</div>
+<div>✅ Provide templates</div>
+<div>✅ Greate developer experience</div>
+<div>❤️ Stay open source</div>
+
+</v-clicks>
+</div>
+</div>
 
 ---
 
-Roadmap
+# Project anti-goals
 
----
+<div class="content-center">
+<div>
+<v-clicks>
 
-Where to go from here
+<div>❌ Provide full stack solution for <span class="italic">every</span> app</div>
+<div>❌ Prevent you from using your favorite tech</div>
 
-- https://github.com/mantis-apps/mantis-cli
-- https://github.com/mantis-apps/examples
-- Discord link
+</v-clicks>
+</div>
+</div>
 
 ---
 layout: center
 ---
 
-# <span class="no-clip">🤔</span> Got questions?
+# <span class="no-clip">🖼️</span> Demo time
+
+---
+
+# Roadmap
+
+<div class="content-center">
+<div>
+
+<div class="line-through">✅ Create a project generator</div>
+<div>🛠️ Create a UI library using shadcn</div>
+<div>🛠️ Provide more templates</div>
+<div>🛠️ Create a discord community</div>
+
+</div>
+</div>
+
+---
+
+# Where to go from here
+
+<div class="content-center">
+<div>
+<div>https://github.com/mantis-apps</div>
+<div>https://discord.gg/aJCCFqgx</div>
+</div>
+</div>
 
 ---
 layout: image-left
@@ -158,8 +215,8 @@ backgroundSize: contain
 
 <div class="flex flex-col gap-5 text-2xl mt-5">
 
-<div>📧 coaching@bytebot.io</div>
 <div>🐤 @RyanClementsHax</div>
 <div>📥 bytebot.beehiiv.com/subscribe</div>
+<div>🤖 https://discord.gg/aJCCFqgx</div>
 
 </div>
