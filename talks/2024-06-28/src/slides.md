@@ -24,9 +24,9 @@ image: headshot.jpg
 
 # About me
 
-<v-clicks>
-
 <div>Ryan Clements, MANTIS core team, and owner of <span class="accent">Byte Bot</span> 🤖</div>
+
+<v-clicks>
 
 <span class="muted">a software agency that helps software teams ❤️ their SaaS apps.</span>
 
@@ -138,6 +138,18 @@ image: tech-logos/mantis-logo-expanded.jpeg
 <img src="/tech-logos/ionic-logo.svg" alt="ionic logo" class="h-20" />
 <img src="/tech-logos/storybook-logo.svg" alt="storybook logo" class="h-20" />
 
+</div>
+
+---
+
+# Your core team
+
+<div class="relative h-full">
+<Avatar src="/ady.jpg" name="Ady Ngom" decoration="⚡" class="absolute top-0 left-0 right-0" />
+<Avatar src="/babacar.jpg" name="Babacar Niang" decoration="🔥" class="absolute top-30 bottom-0 left-30" />
+<Avatar src="/ibrahim.jpg" name="Ibrahim Sefer" decoration="👨‍💻" class="absolute top-30 bottom-0 right-30" />
+<Avatar src="/headshot.jpg" name="Ryan Clements" decoration="🚀" class="absolute bottom-15 left-0 right-0" />
+<img src="/tech-logos/mantis-logo.png" alt="mantis-loto" class="absolute top-50 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full h-20 w-20" />
 </div>
 
 ---
