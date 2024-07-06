@@ -1,0 +1,29 @@
+.no-clip {
+  @apply bg-clip-none text-initial;
+}
+
+.slidev-page {
+  @apply bg-gray-950 text-gray-300;
+}
+
+.muted {
+  @apply text-gray-400;
+}
+
+.accent {
+  color: #dd0031;
+}
+
+img {
+  &.background {
+    @apply absolute inset-0 h-125 opacity-10 m-auto;
+  }
+}
+
+.screenshot-heap {
+  @apply relative;
+}
+
+.content-center {
+  @apply flex items-center justify-center pb-30 h-full;
+}

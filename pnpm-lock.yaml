@@ -36,6 +36,8 @@ importers:
 
   talks/2024-06-13/src: {}
 
+  talks/2024-06-28/src: {}
+
   talks/example/src: {}
 
 packages:
