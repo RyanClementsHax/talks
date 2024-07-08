@@ -23,9 +23,9 @@ image: headshot.jpg
 
 # Who am I?
 
-<v-clicks>
-
 <div>Ryan Clements, Owner of <span class="text-yellow-400">Byte Bot</span> 🤖</div>
+
+<v-clicks>
 
 <span class="muted">a software agency that helps software teams ❤️ their SaaS apps.</span>
 
@@ -55,6 +55,18 @@ layout: image
 image: blog-screenshot.png
 backgroundSize: contain
 transition: fade
+---
+
+---
+layout: image
+image: storybook-screenshot-component.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: storybook-screenshot.png
+backgroundSize: contain
 ---
 
 ---
@@ -90,18 +102,6 @@ clicks: 3
   {{ $clicks > 2 ? '💔' : '❤️' }}
 </div>
 </div>
-
----
-layout: image
-image: storybook-screenshot-component.png
-backgroundSize: contain
----
-
----
-layout: image
-image: storybook-screenshot.png
-backgroundSize: contain
----
 
 ---
 src: ./pages/nextjs-storybook-integration.md
@@ -147,10 +147,85 @@ layout: center
 # <span class="tag">Lesson #1:</span> Scratch your itch
 
 ---
+layout: image
+image: frustrating-blog-post.png
+---
+
+---
+layout: center
+---
+
+````md magic-move
+
+```js
+// .storybook/preview.js
+import "../styles/globals.css";
+```
+
+```tsx
+// .storybook/preview.js
+import * as NextImage from "next/image";
+
+const OriginalNextImage = NextImage.default;
+
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+});
+```
+
+```diff
+// package.json
+
+"scripts": {
+-    "storybook": "start-storybook -p 6006",
+-    "build-storybook": "build-storybook"
++    "storybook": "start-storybook -p 6006 -s ./public",
++    "build-storybook": "build-storybook -s public"
+}
+```
+
+````
+
+---
+layout: center
+---
+
+# My solution wasn't perfect either, however{.transition-text}
+
+---
 layout: center
 ---
 
 # <span class="tag">Lesson #2:</span> It doesn't have to be perfect
+
+---
+
+# Here's all the things wrong with it <span class="no-clip">😬</span>
+
+<div>
+
+<v-clicks>
+
+❌ Didn't even cover 50% of Next.js's api
+
+❌ Didn't have any tests
+
+❌ Didn't support every Next.js version
+
+❌ Didn't support every Storybook version
+
+❌ Didn't have a fancy brancing strategy (i.e. everything off of `main`)
+
+</v-clicks>
+
+</div>
+
+---
+layout: center
+---
+
+# Predicting all of your users' needs beforehand is futile{.transition-text}
 
 ---
 layout: center
@@ -177,7 +252,100 @@ image: nextjs-runtime-issue.png
 layout: center
 ---
 
-# <span class="tag">Lesson #4:</span> Automate as much as possible
+# More on my blog...
+
+<div class="flex gap-10">
+
+<img src="/you-probably-dont-need-mocking.png"  class="blog-card" alt="you probably don't need mocking" />
+<img src="/justifying-mocking.png"  class="blog-card" alt="justifying mocking" />
+
+</div>
+
+---
+layout: center
+---
+
+# Why did it get so much traction anyway?{.transition-text}
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #4:</span> Zero config is a killer feature
+
+---
+layout: center
+---
+
+````md magic-move
+
+```sh
+npm install --save-dev storybook-addon-next
+```
+
+```js
+// .storybook/main.js
+
+module.exports = {
+  // other config ommited for brevity
+  addons: [
+    // ...
+    'storybook-addon-next'
+    // ...
+  ]
+}
+```
+
+````
+
+---
+layout: center
+---
+
+# <span class="no-clip">🥳</span> <span class="tag">You're done</span> <span v-click>...seriously</span>
+
+---
+layout: center
+---
+
+```js {7}
+// .storybook/main.js
+
+module.exports = {
+  // other config ommited for brevity
+  addons: [
+    // ...
+    'storybook-addon-next'
+    // ...
+  ]
+}
+```
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #5:</span> Documentation is a killer feature
+
+---
+layout: center
+---
+
+<SlidevVideo autoplay loop>
+  <source src="/docs-scroll.mp4" type="video/mp4" />
+</SlidevVideo>
+
+---
+layout: center
+---
+
+# <span class="no-clip">😫</span> Success started to be a burden though{.transition-text}
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #6:</span> Automate as much as possible
 
 ---
 layout: two-cols-normal-header
@@ -230,10 +398,141 @@ clicks: 14
 
 ---
 layout: center
+---
+
+````md magic-move
+
+```yml
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: restore dependencies
+        uses: bahmutov/npm-install@v1
+      - run: yarn lint:all
+  type_check:
+    name: type check
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: restore dependencies
+        uses: bahmutov/npm-install@v1
+      - run: yarn type-check
+```
+
+```yml
+jobs:
+  e2e:
+    strategy:
+      matrix:
+        include:
+          - project-name: next v13
+            project-path: examples/nextv13
+            chromatic-token: CHROMATIC_TOKEN_EXAMPLES_NEXTV13
+          # ... and a bunch of other test projects
+    name: ${{ matrix.project-name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+      - name: restore addon dependencies
+        uses: bahmutov/npm-install@v1
+      - name: build addon
+        run: yarn build
+      - name: restore project dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: ${{ matrix.project-path }}
+      - name: publish to chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets[matrix.chromatic-token] }}
+          workingDir: ${{ matrix.project-path }}
+          buildScriptName: ${{ matrix.build-script-name }}
+```
+
+```yml
+name: 'Close stale issues and PRs'
+on:
+  workflow_dispatch:
+  schedule:
+    # This runs every day at 1:30am https://crontab.guru/#30_1_*_*_*
+    - cron: '30 1 * * *'
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v4
+        with:
+          stale-issue-message: 'This issue has been automatically ...'
+          stale-pr-message: 'This PR has been automatically ...'
+          close-issue-message: 'This issue has been automatically ...'
+          close-pr-message: 'This PR has been automatically ...'
+          exempt-issue-labels: keep
+```
+
+```yaml
+name: Publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+          registry-url: https://registry.npmjs.org/
+      - name: restore dependencies
+        uses: bahmutov/npm-install@v1
+      - name: release
+        run: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+````
+
+---
+layout: center
+---
+
+<h1 class="no-clip !text-[100px]">💪</h1>
+
+---
+layout: center
+---
+
+# Automation aside, there's a more critical thing to build{.transition-text}
+
+---
+layout: center
 transition: fade
 ---
 
-# <span class="tag">Lesson #5:</span> Get good at spelunking
+# <span class="tag">Lesson #7:</span> Get good at spelunking
 
 <img src="/spelunking.jpg" alt="spelunking" class="background"/>
 
@@ -295,7 +594,21 @@ layout: center
 layout: center
 ---
 
-# <span class="tag">Lesson #6:</span> Write well
+# Code isn't the only thing you trip over though{.transition-text}
+
+---
+layout: center
+---
+
+# <span class="tag">Lesson #8:</span> Write well for your own sake
+
+---
+layout: center
+---
+
+<SlidevVideo autoplay loop>
+  <source src="/docs-scroll.mp4" type="video/mp4" />
+</SlidevVideo>
 
 ---
 layout: center
@@ -352,10 +665,16 @@ image: descriptive-comment.png
 
 ---
 layout: center
+---
+
+# Unfortunately, you still get pressured in issues{.tag}
+
+---
+layout: center
 transition: none
 ---
 
-# <span class="tag">Lesson #7:</span> Stand up for yourself
+# <span class="tag">Lesson #9:</span> Stand up for yourself
 
 ---
 layout: image
@@ -373,13 +692,7 @@ image: saying-no-response.png
 layout: center
 ---
 
-# <span class="tag">Lesson #8:</span> Good documentation matters
-
----
-layout: center
----
-
-# <span class="tag">Lesson #9:</span> It's ok to let go
+# <span class="tag">Lesson #10:</span> It's ok to let go
 
 ---
 layout: image
@@ -390,7 +703,7 @@ image: storybook-nextjs-screenshot.png
 layout: center
 ---
 
-# <span class="tag">Lesson #10:</span> It's worth it
+# <span class="tag">Lesson #11:</span> It's worth it
 
 ---
 layout: image

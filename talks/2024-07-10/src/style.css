@@ -6,6 +6,10 @@ h1 {
   @apply bg-clip-none text-initial opacity-50;
 }
 
+.transition-text {
+  @apply bg-clip-none text-initial opacity-50;
+}
+
 .no-clip {
   @apply bg-clip-none text-initial;
 }
