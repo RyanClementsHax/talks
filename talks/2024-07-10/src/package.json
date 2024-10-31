@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "slidev build --base /2024/07/10/tampadevs --out ../../../dist/2024/07/10/tampadevs",
+    "dev": "slidev --open",
+    "export": "slidev export --dark --with-clicks --output ../slides.pdf"
+  }
+}

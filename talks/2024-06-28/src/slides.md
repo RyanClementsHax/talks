@@ -141,6 +141,12 @@ image: tech-logos/mantis-logo-expanded.jpeg
 </div>
 
 ---
+layout: center
+---
+
+`npx mantis-app@latest init`
+
+---
 
 # Your core team
 
