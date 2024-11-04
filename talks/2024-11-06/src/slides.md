@@ -17,6 +17,120 @@ drawings:
 <img src="/thumbnail.webp" alt="thumbnail image" class="background"/>
 
 ---
+layout: image
+image: kkr-logo.png
+---
+
+<!--
+Who knows who KKR is?
+-->
+
+---
+layout: image
+image: kkr-aum.png
+backgroundSize: contain
+---
+
+<!--
+They manage tons of investments, many in commercial real estate
+
+You probably drove by a few of the properties they own or loaned to on the way to this talk
+-->
+
+---
+layout: center
+---
+
+# RealHouse
+
+---
+layout: center
+---
+
+# RealHouse
+
+<div>
+
+<v-clicks>
+
+🔬 Internal data science tool providing in depth analysis to 1000+ investments
+
+💪 Enhances KKR's real estate investment capabilities and getting better every sprint
+
+👩‍💼 Supports 200+ employees across various departments
+
+🚀 Key features
+
+</v-clicks>
+
+</div>
+
+<!--
+https://www.merlinsnotes.com/p/openai-nabs-largest-venture-round-ever
+-->
+
+---
+layout: center
+---
+
+# Key features
+
+<div>
+
+<v-clicks>
+
+📈 Instant access to deal information and metrics
+
+⚙️ Automates routine tasks like monitoring interest rate caps
+
+📊 Surfaces fund composition and risk exposures in one place
+
+</v-clicks>
+
+</div>
+
+<!--
+https://www.merlinsnotes.com/p/openai-nabs-largest-venture-round-ever
+-->
+
+---
+layout: center
+---
+
+```mermaid
+flowchart TD
+    fe["React SPA"]
+    be{"FastAPI (Python)"}
+    db[(Postgres)]
+    fe --> be
+    be --> db
+```
+
+---
+layout: center
+---
+
+```mermaid
+flowchart TD
+    fe["React SPA"]
+    be{"FastAPI (Python)"}
+    db[(Postgres)]
+    db2[(Other dbs)]
+    jobs["Background Jobs"]
+    etc["..."]
+    fe --> be
+    be --> db
+    jobs --> db
+    jobs --> be
+    db2 <--> db
+    etc --> db
+```
+
+---
+
+- Problem: We want to track documents
+
+---
 layout: image-right
 image: headshot.jpg
 ---
@@ -52,12 +166,6 @@ image: headshot.jpg
 
 ---
 
-- Who is KKR?
-  - You probably drove by one of their properties
-- Real House
-- Rough tech stack
-- Problem: We want to track documents
-- Enter me
 - Goals of talk
 - Outline of problem domain (guarantors, etc)
 - Uh oh: our data model isn't sufficient
