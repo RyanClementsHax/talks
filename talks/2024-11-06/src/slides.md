@@ -17,37 +17,93 @@ drawings:
 <img src="/thumbnail.webp" alt="thumbnail image" class="background"/>
 
 ---
-layout: image
-image: kkr-logo.png
+layout: center
 ---
 
-<!--
-Who knows who KKR is?
--->
+# "Database migrations are like moving a house of cards <span v-click>- do it carefully</span><span v-click>, or you'll be picking up pieces for days."</span>
 
----
-layout: image
-image: kkr-aum.png
-backgroundSize: contain
----
-
-<!--
-They manage tons of investments, many in commercial real estate
-
-You probably drove by a few of the properties they own or loaned to on the way to this talk
--->
+<div class="ml-5 mt-1">
+<span v-click class="opacity-50">- ChatGPT</span>
+</div>
 
 ---
 layout: center
 ---
 
-# RealHouse
+# How would you do it?
 
 ---
 layout: center
 ---
 
-# RealHouse
+# Goals
+
+<div>
+
+<v-clicks>
+
+📖 <span class="clip">Share</span> a story
+
+🔍 Learn how to <span class="clip">identify</span> the need for a data migration
+
+💭 Learn how to <span class="clip">plan</span> a data migration
+
+🏎️ Learn how to <span class="clip">execute</span> a data migration
+
+💣 Learn how to <span class="clip">avoid</span> common failure modes
+
+</v-clicks>
+
+</div>
+
+---
+layout: image-right
+image: headshot.jpg
+---
+
+# Who am I?
+
+<div>Ryan Clements, Owner of <span class="text-yellow-400">Byte Bot</span> 🤖</div>
+
+<v-clicks>
+
+<span class="muted">a full-stack software agency that helps software teams ship valuable software 🚀</span>
+
+<div class="flex gap-2 mt-10">
+  <img src="/tech-logos/react-logo.svg" alt="react" class="logo" />
+  <img src="/tech-logos/nextjs-logo.svg" alt="nextjs" class="logo" />
+  <img src="/tech-logos/vue-logo.svg" alt="vue" class="logo" />
+  <img src="/tech-logos/nuxt-logo.svg" alt="nuxt" class="logo" />
+  <img src="/tech-logos/typescript-logo.svg" alt="typescript" class="logo" />
+  <img src="/tech-logos/javascript-logo.svg" alt="javascript" class="logo" />
+  <img src="/tech-logos/node-logo.svg" alt="node" class="logo" />
+  <img src="/tech-logos/postgres-logo.svg" alt="postgres" class="logo" />
+</div>
+
+<div class="flex flex-col gap-2 mt-10">
+
+<div>🌐 bytebot.io</div>
+<div>📧 info@bytebot.io</div>
+<div>🐤 @RyanClementsHax</div>
+<div>📥 bytebot.beehiiv.com/subscribe</div>
+
+</div>
+
+</v-clicks>
+
+---
+layout: center
+---
+
+# Let's set the scene
+
+<span v-click>The investment firm in question will be unnamed to respect their security policy</span>
+
+---
+layout: center
+---
+
+# The application
 
 <div>
 
@@ -55,19 +111,13 @@ layout: center
 
 🔬 Internal data science tool providing in depth analysis to 1000+ investments
 
-💪 Enhances KKR's real estate investment capabilities and getting better every sprint
+💪 Enhances the firm's investment capabilities and getting better every sprint
 
 👩‍💼 Supports 200+ employees across various departments
-
-🚀 Key features
 
 </v-clicks>
 
 </div>
-
-<!--
-https://www.merlinsnotes.com/p/openai-nabs-largest-venture-round-ever
--->
 
 ---
 layout: center
@@ -88,10 +138,6 @@ layout: center
 </v-clicks>
 
 </div>
-
-<!--
-https://www.merlinsnotes.com/p/openai-nabs-largest-venture-round-ever
--->
 
 ---
 layout: center
@@ -132,63 +178,11 @@ layout: center
 
 # <span class="tag">Problem:</span> We want to automate document tracking
 
----
-layout: image-right
-image: headshot.jpg
----
+<!--
+This was a time consuming process for the analysts preventing teams from doing more valuable tasks
 
-# Who am I?
-
-<div>Ryan Clements, Owner of <span class="text-yellow-400">Byte Bot</span> 🤖</div>
-
-<v-clicks>
-
-<span class="muted">a software agency that helps software teams ship valuable software 🚀</span>
-
-<div class="flex gap-2 mt-10">
-  <img src="/tech-logos/react-logo.svg" alt="react" class="logo" />
-  <img src="/tech-logos/nextjs-logo.svg" alt="nextjs" class="logo" />
-  <img src="/tech-logos/vue-logo.svg" alt="vue" class="logo" />
-  <img src="/tech-logos/nuxt-logo.svg" alt="nuxt" class="logo" />
-  <img src="/tech-logos/typescript-logo.svg" alt="typescript" class="logo" />
-  <img src="/tech-logos/javascript-logo.svg" alt="javascript" class="logo" />
-  <img src="/tech-logos/node-logo.svg" alt="node" class="logo" />
-</div>
-
-<div class="flex flex-col gap-2 mt-10">
-
-<div>🌐 bytebot.io</div>
-<div>📧 info@bytebot.io</div>
-<div>🐤 @RyanClementsHax</div>
-<div>📥 bytebot.beehiiv.com/subscribe</div>
-
-</div>
-
-</v-clicks>
-
----
-layout: center
----
-
-# Goals
-
-<div>
-
-<v-clicks>
-
-🔍 Learn how to <span class="clip">identify</span> the need for a data migration
-
-💭 Learn how to <span class="clip">plan</span> a data migration
-
-🏎️ Learn how to <span class="clip">execute</span> a data migration
-
-😬 Learn how a data migration can <span class="clip">fail</span>
-
-📖 <span class="clip">Share</span> a story
-
-</v-clicks>
-
-</div>
+Not to mention this is super annoying
+-->
 
 ---
 layout: image
@@ -230,13 +224,19 @@ Could be multiple
 layout: center
 ---
 
+# They all owe us documents regularly
+
+---
+layout: center
+---
+
 # Let's see how we model the data
 
 ---
 layout: center
 ---
 
-# Take our <span class="tag">`loans`</span> table
+# Take guarantor data for an example
 
 ```sql
 CREATE TABLE loans (
@@ -358,6 +358,7 @@ layout: center
 - What other options are there?
 - What are their tradeoffs?
 - What committments does this need?
+- Do we need to do all of it or can we chunk it?
 
 ---
 layout: image
@@ -372,7 +373,7 @@ We gathered product, lead engineers, and domain experts to align on the next ste
 layout: center
 ---
 
-<h1 class="no-clip !text-[100px]">👍</h1>
+# 👍, but let's do guarantor data first
 
 ---
 layout: center
@@ -598,6 +599,17 @@ It made the actual tasks feel "pure implementation"
 -->
 
 ---
+layout: image
+image: round-table.jpg
+---
+
+---
+layout: center
+---
+
+<h1 class="no-clip !text-[100px]">👍</h1>
+
+---
 layout: center
 ---
 
@@ -672,6 +684,8 @@ layout: center
 <div>
 
 <v-clicks>
+
+😫 Avoid them if you can
 
 👩‍💼 Understand your application and users
 
