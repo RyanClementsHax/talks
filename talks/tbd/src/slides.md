@@ -84,25 +84,12 @@ image: headshot.jpg
 layout: center
 ---
 
-# The <span class="text-green-500">$1M</span> problem
+TODO: picture of raising hands
 
----
-layout: center
----
-
-# Raise your hand if you've ever paid for a gym membership you didn't use.
-
-<div v-click class="mt-8 text-2xl">
-
-Now keep your hand up if you've ever seen a company pay **$50,000 a month** for software features they never touched.
-
-</div>
-
----
-layout: center
----
-
-# Sometimes the best software project is the one that *removes* software.
+<!--
+- "Raise your hand if you've ever paid for a gym membership you didn't use."
+- "Now keep your hand up if you've ever seen a company pay $50,000 a month for software features they never touched."
+-->
 
 ---
 layout: center
@@ -114,11 +101,11 @@ layout: center
 
 <v-clicks>
 
-🏢 Scrappy SaaS start
+🏢 Scrappy start
 
-⚡ Getting rated was **existential**
+🚀 Launched fast with off the shelf tools
 
-🚀 Launched fast
+⚡ Getting rated as a loan servicer was **existential**
 
 </v-clicks>
 
@@ -143,31 +130,31 @@ graph LR
     B --> C["Bloat<br/>$1M+/year in SaaS"]
 ```
 
+<!--
+Now they've had several years of stable growth, they're dealing with bloat
+-->
+
 ---
 layout: center
 ---
 
-# The $1M Problem
+# The <span class="text-green-500">$1M</span> Problem
 
 <div>
 
 <v-clicks>
 
-💸 **$1M+/year** in subscriptions
+💸 **$1M+/year** in subscriptions to just one vendor
 
 📊 Using maybe **20%** of features
 
-🔍 Wrong tools for their actual needs
+🤷‍♂️ Sorta worked
 
 🔒 Locked into contracts
 
+🤔 Major opportunity cost
+
 </v-clicks>
-
-</div>
-
-<div v-click class="mt-8">
-
-> "We were paying premium prices for a hammer when all we needed was a rock."
 
 </div>
 
@@ -180,31 +167,67 @@ layout: center
 
 ---
 layout: center
+clicks: 9
 ---
 
 # The Specific Pain Point
 
-<!-- TODO: diagram of the DCH approval workflow (servicer -> SaaS tool -> DCH parent company -> approval back) -->
+<div class="flex items-center justify-center gap-3 mt-10 text-lg relative">
 
-<div class="text-2xl mt-5">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer</div>
+</div>
 
-The **DCH approval workflow**
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">Expensive SaaS Tool</div>
+<div class="flex items-center gap-3">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+<div class="text-sm opacity-50 w-8 text-center">→</div>
+<div class="border border-red-500/50 rounded-lg px-3 py-2 bg-red-900/40 text-center w-32 h-14 flex flex-col items-center justify-center">
+<div class="font-bold text-sm">Parent Co Acct</div>
+<div class="text-xs text-red-400">$50K/mo</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">DCH Parent Co</div>
+</div>
+
+<div
+  v-click="[1, 5]" v-motion
+  :initial="{ x: -288 }"
+  :enter="{ x: -288 }"
+  :click-2="{ x: -96 }"
+  :click-3="{ x: 96 }"
+  :click-4="{ x: 288 }"
+  :leave="{ x: 288 }"
+  class="absolute -bottom-8 left-0 right-0 flex justify-center"
+><span class="text-2xl">📜</span><span class="text-2xl -ml-3">📜</span><span class="text-2xl -ml-3">📜</span></div>
+
+<div
+  v-click="5" v-motion
+  :initial="{ x: 288 }"
+  :enter="{ x: 288 }"
+  :click-6="{ x: 96 }"
+  :click-7="{ x: -96 }"
+  :click-8="{ x: -288 }"
+  class="absolute -bottom-8 left-0 right-0 flex justify-center"
+><span class="text-xl">✅</span><span class="text-xl -ml-1">✅</span><span class="text-xl -ml-1">❌</span></div>
 
 </div>
 
-<div v-click class="mt-5 text-xl opacity-70">
+<div v-click="9" class="mt-14 text-xl opacity-70 text-center">
 
-One expensive SaaS contract for one workflow.
+One expensive SaaS contract for **one** workflow.
 
 </div>
-
-<!--
-- Introduce the DCH (Direct Certificate Holder) workflow — this is the specific contract we're targeting
-- Servicer processes business plans and consents
-- DCH (parent company) must approve within a time window
-- They were paying for an expensive SaaS tool just for this one workflow
-- Walk the audience through the diagram to make the flow concrete
--->
 
 ---
 layout: center
@@ -214,19 +237,89 @@ layout: center
 
 <div v-click class="text-2xl mt-5">
 
-This workflow didn't *need* to live in an external tool.
+This workflow didn't <span class="clip">need</span> to live in an external tool.
 
 </div>
 
 <div v-click class="text-2xl mt-3">
 
-The parent company **already had an internal platform**.
+The parent company <span class="clip">developed an internal platform</span> since the servicer was founded.
 
 </div>
 
 <div v-click class="text-2xl mt-3">
 
-It could be replicated in-house.
+It could be replicated <span class="clip">in-house</span>.
+
+</div>
+
+---
+layout: center
+---
+
+# The Vision
+
+<div class="flex items-center justify-center gap-3 mt-10 text-lg relative">
+
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">Expensive SaaS Tool</div>
+<div class="flex items-center justify-center">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-green-500/50 rounded-xl p-3 bg-green-900/10">
+<div class="text-xs uppercase tracking-wider text-green-400 text-center mb-2">Internal Platform</div>
+<div class="flex items-center justify-center">
+<div class="border border-green-500/50 rounded-lg px-3 py-2 bg-green-900/40 text-center w-32 h-14 flex flex-col items-center justify-center">
+<div class="font-bold text-sm">Parent Co Acct</div>
+<div class="text-xs text-green-400">~$0/mo</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">DCH Parent Co</div>
+</div>
+
+<div
+  v-click="[1, 5]" v-motion
+  :initial="{ x: -312.5 }"
+  :enter="{ x: -312.5 }"
+  :click-2="{ x: -109 }"
+  :click-3="{ x: 115 }"
+  :click-4="{ x: 315 }"
+  :leave="{ x: 315 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-2xl">📜</span><span class="text-2xl -ml-3">📜</span><span class="text-2xl -ml-3">📜</span></div>
+
+<div
+  v-click="5" v-motion
+  :initial="{ x: 315 }"
+  :enter="{ x: 315 }"
+  :click-6="{ x: 115 }"
+  :click-7="{ x: -109 }"
+  :click-8="{ x: -312.5 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-xl">✅</span><span class="text-xl -ml-1">✅</span><span class="text-xl -ml-1">✅</span></div>
+
+</div>
+
+<div v-click="9" class="mt-14 text-xl opacity-70 text-center">
+
+Same workflow, **replicated in-house** on the internal platform.
 
 </div>
 
@@ -534,7 +627,7 @@ layout: center
 
 # The Communication Breakthrough
 
-<!-- TODO: visual showing emails going into a void vs. a Teams channel lighting up — the "before and after" of communication -->
+TODO: visual showing emails going into a void vs. a Teams channel lighting up — the "before and after" of communication
 
 <div>
 
@@ -672,7 +765,7 @@ layout: center
 
 # "Get the bones working before you add the muscle."
 
-<!-- TODO: consider a visual showing skeleton system -> integrated system timeline progression -->
+TODO: consider a visual showing skeleton system -> integrated system timeline progression
 
 <div>
 
@@ -828,7 +921,7 @@ layout: center
 
 # The Mapping Problem
 
-<!-- TODO: diagram showing the mapping challenge (old system entities with no clean IDs -> fuzzy matching via addresses, geo-coordinates, property IDs -> new system entities) -->
+TODO: diagram showing the mapping challenge (old system entities with no clean IDs -> fuzzy matching via addresses, geo-coordinates, property IDs -> new system entities)
 
 <div v-click class="mt-5 text-xl">
 
@@ -874,7 +967,7 @@ layout: center
 
 # The Performance Journey
 
-<!-- TODO: visual showing performance progression (1 week naive -> rate limits with multi-threading -> hours with S3-to-S3 copy) -->
+TODO: visual showing performance progression (1 week naive -> rate limits with multi-threading -> hours with S3-to-S3 copy)
 
 <div>
 
