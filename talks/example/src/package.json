@@ -5,6 +5,6 @@
   "scripts": {
     "build": "slidev build --base /example --out ../../../dist/example",
     "dev": "slidev --open",
-    "export": "slidev export --dark --with-clicks --timeout 120000 --output ../slides.pdf"
+    "export": "slidev export --dark --with-clicks --output ../slides.pdf"
   }
 }
