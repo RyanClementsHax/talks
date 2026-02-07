@@ -187,9 +187,12 @@ clicks: 9
 <div class="font-bold text-sm">Servicer Acct</div>
 </div>
 <div class="text-sm opacity-50 w-8 text-center">→</div>
+<div class="relative">
 <div class="border border-red-500/50 rounded-lg px-3 py-2 bg-red-900/40 text-center w-32 h-14 flex flex-col items-center justify-center">
 <div class="font-bold text-sm">Parent Co Acct</div>
 <div class="text-xs text-red-400">$50K/mo</div>
+</div>
+<div v-click="9" class="absolute -inset-2 border-2 border-yellow-400 rounded-xl animate-pulse"></div>
 </div>
 </div>
 </div>
@@ -278,7 +281,7 @@ layout: center
 
 <div class="text-xl w-8 text-center">→</div>
 
-<div class="border border-green-500/50 rounded-xl p-3 bg-green-900/10">
+<div class="border border-green-500/50 rounded-xl p-3 bg-green-800/10">
 <div class="text-xs uppercase tracking-wider text-green-400 text-center mb-2">Internal Platform</div>
 <div class="flex items-center justify-center">
 <div class="border border-green-500/50 rounded-lg px-3 py-2 bg-green-900/40 text-center w-32 h-14 flex flex-col items-center justify-center">
@@ -345,9 +348,7 @@ Cancel one contract. Save $600K annually.
 layout: center
 ---
 
-# <span class="tag">Part 2:</span> The Conflict
-
-## The Stakes
+# The Stakes
 
 ---
 layout: center
@@ -392,21 +393,13 @@ layout: center
 
 # Two Major Risks
 
-<div>
+<div class="text-2xl">
 
 <v-clicks>
 
-<div class="text-2xl mb-8">
+1. Poorly documented APIs
 
-**1. Poorly documented APIs**
-
-</div>
-
-<div class="text-2xl">
-
-**2. A vendor with zero incentive to help**
-
-</div>
+2. A vendor with zero incentive to help
 
 </v-clicks>
 
@@ -421,7 +414,7 @@ layout: center
 layout: center
 ---
 
-# "Who here has tried to get help from a vendor you're about to leave?"
+# Who here has tried to get help from a vendor you're about to leave?
 
 <div v-click class="mt-5 text-2xl opacity-70">
 
@@ -470,9 +463,7 @@ layout: center
 layout: center
 ---
 
-# <span class="tag">Part 3:</span> The Journey
-
-## Building It
+# Building It
 
 ---
 layout: center
@@ -488,7 +479,7 @@ layout: center
 
 <div class="text-2xl mt-5">
 
-"Projects fail when teams assume alignment."
+Projects fail when teams assume alignment.
 
 </div>
 
