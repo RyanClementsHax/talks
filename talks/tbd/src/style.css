@@ -35,3 +35,13 @@ img {
 blockquote.quote {
   @apply italic text-stone-400 text-xl;
 }
+
+@keyframes draw-circle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-circle {
+  animation: draw-circle 0.8s ease-out forwards;
+}
