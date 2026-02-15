@@ -585,6 +585,14 @@ layout: center
 
 ---
 layout: center
+---
+
+# The Vendor Problem
+
+## How do we get them to do stuff for us? <span v-click>🤷</span>
+
+---
+layout: center
 clicks: 1
 ---
 
@@ -776,12 +784,6 @@ That's it. That's point B.
 
 </div>
 
-<!--
-- Show the familiar architecture diagram - they've seen this before.
-- Click to reveal: $50K/mo sitting in that Parent Co account box.
-- That's the real Point B. Cancel that. Save that money. Everything else is negotiable.
--->
-
 ---
 layout: center
 ---
@@ -810,13 +812,89 @@ layout: center
 
 </div>
 
+---
+layout: center
+---
+
+# The Diff for Our Project
+
+<VSwitch>
+<template #0>
+<div class="flex items-center justify-center gap-3 text-lg">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer</div>
+</div>
+<div class="text-xl w-8 text-center">→</div>
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">SaaS Tool</div>
+<div class="flex items-center gap-3">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-18 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+<div class="text-sm opacity-50 w-8 text-center">→</div>
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-18 flex flex-col items-center justify-center">
+<div class="font-bold text-sm">Parent Co Acct</div>
+<div class="text-xs text-green-400">$50k/mo</div>
+</div>
+</div>
+</div>
+<div class="text-xl w-8 text-center">→</div>
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">DCH Parent Co</div>
+</div>
+</div>
+</template>
+<template #1-5><div class="flex items-center justify-center gap-3 text-lg">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer</div>
+</div>
+<div class="text-xl w-8 text-center">→</div>
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">SaaS Tool</div>
+<div class="flex items-center justify-center">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-18 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+</div>
+</div>
+<div class="text-xl w-8 text-center">→</div>
+<div class="border border-purple-500/50 rounded-xl p-3 bg-purple-800/10">
+<div class="text-xs uppercase tracking-wider text-purple-400 text-center mb-2">Internal Platform</div>
+<div class="flex items-center justify-center">
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-18 flex flex-col items-center justify-center">
+<div class="font-bold text-sm">Parent Application</div>
+<div class="text-xs text-green-400">~$0k/mo</div>
+</div>
+</div>
+</div>
+<div class="text-xl w-8 text-center">→</div>
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">DCH Parent Co</div>
+</div>
+</div></template>
+</VSwitch>
+
+<div>
+
+<v-clicks at="1">
+
+🔄 **Hot swap** the parent account
+
+🐛 **Bug-for-bug** compatible
+
+📦 **Backfill** old data
+
+📊 **Monitor and alert**
+
+</v-clicks>
+
+</div>
+
 <!--
-- The diff should be exhaustive - nothing left implied, nothing assumed
-- Each question we asked during the diff became a backlog item or revealed hidden work
-- They even forgot entire integration points existed - deployments they assumed would "just work"
-- Without this exercise, original estimates would have been months off
-- The validation: if completing every item doesn't get you from A to B, something was defined wrong
-- Key point: "Break it into pieces your team can execute. Make ownership clear. Make outcomes testable."
+- The best way to achieve the project goal was to hot swap the parent account with our internal platform
+- To preserve speed, we needed it to match the old system, bug for bug - no "improvements" during migration
+- To maintain minimal disruption, we needed to backfill old data so users wouldn't notice the switch
+- And we needed to instrument monitoring and alerting so we could catch issues before users did
 -->
 
 ---
