@@ -209,7 +209,7 @@ clicks: 11
   :click-6="{ x: 96 }"
   :click-7="{ x: 288 }"
   :leave="{ x: 288 }"
-  class="absolute -bottom-8 left-0 right-0 flex justify-center"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
 ><span class="text-2xl">📜</span><span class="text-2xl -ml-3">📜</span><span class="text-2xl -ml-3">📜</span></div>
 
 <div
@@ -219,7 +219,7 @@ clicks: 11
   :click-9="{ x: 96 }"
   :click-10="{ x: -96 }"
   :click-11="{ x: -288 }"
-  class="absolute -bottom-8 left-0 right-0 flex justify-center"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
 ><span class="text-xl">✅</span><span class="text-xl -ml-1">✅</span><span class="text-xl -ml-1">❌</span></div>
 
 </div>
@@ -939,7 +939,18 @@ layout: center
 layout: center
 ---
 
-# Step 2: Managing the Disincentivized Vendor
+# Step 2: Get started...almost
+
+<!--
+- You'll never have an easier time impacting the success of the project than early on in the project
+- Make intentional choices to speed up development from the get go
+-->
+
+---
+layout: center
+---
+
+# Managing the Disincentivized Vendor
 
 ---
 layout: center
@@ -1036,12 +1047,6 @@ layout: center
 layout: center
 ---
 
-# Step 3: Building for Reality
-
----
-layout: center
----
-
 # "Their API took 15 minutes to respond."
 
 <div v-click class="mt-5 text-xl opacity-70">
@@ -1112,35 +1117,610 @@ TODO: consider a visual showing skeleton system -> integrated system timeline pr
 -->
 
 ---
-layout: center
+layout:center
 ---
 
-# Design Principles That Saved Us
+# Step 3: Implementing a Good Design
 
-<div>
+---
+layout: center
+clicks: 4
+---
 
-<v-clicks>
+# What is an ETL?
 
-🔍 **Data quality skepticism**
+<div class="flex items-center justify-center gap-2 mt-10 text-lg relative">
 
-🔄 **Swappable replacement**
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-16 flex items-center justify-center">
+<div class="font-bold text-sm">Source</div>
+</div>
 
-📌 **Clear source of truth**
+<div v-click="1" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" class="text-xl w-8 text-center">→</div>
 
-👁️ **Observability first**
+<div v-click="1" v-motion :initial="{ opacity: 0, scale: 0.6 }" :enter="{ opacity: 1, scale: 1 }" class="border border-amber-500/50 rounded-lg px-3 py-2 bg-amber-900/40 text-center w-32 h-16 flex flex-col items-center justify-center">
+<div class="font-bold text-sm">Extract</div>
+<div class="text-[10px] opacity-70 mt-1">pull raw data</div>
+</div>
 
-🔁 **Idempotent operations**
+<div v-click="2" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" class="text-xl w-8 text-center">→</div>
 
-</v-clicks>
+<div v-click="2" v-motion :initial="{ opacity: 0, scale: 0.6 }" :enter="{ opacity: 1, scale: 1 }" class="border border-amber-500/50 rounded-lg px-3 py-2 bg-amber-900/40 text-center w-32 h-16 flex flex-col items-center justify-center">
+<div class="font-bold text-sm">Transform</div>
+<div class="text-[10px] opacity-70 mt-1">clean & reshape</div>
+</div>
+
+<div v-click="3" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" class="text-xl w-8 text-center">→</div>
+
+<div v-click="3" v-motion :initial="{ opacity: 0, scale: 0.6 }" :enter="{ opacity: 1, scale: 1 }" class="border border-amber-500/50 rounded-lg px-3 py-2 bg-amber-900/40 text-center w-32 h-16 flex flex-col items-center justify-center">
+<div class="font-bold text-sm">Load</div>
+<div class="text-[10px] opacity-70 mt-1">write to dest</div>
+</div>
+
+<div v-click="4" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" class="text-xl w-8 text-center">→</div>
+
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-16 flex items-center justify-center">
+<div class="font-bold text-sm">Destination</div>
+</div>
+
+<div
+  v-motion
+  :initial="{ x: -352 }"
+  :enter="{ x: -352 }"
+  :click-1="{ x: -176 }"
+  :click-2="{ x: 0 }"
+  :click-3="{ x: 176 }"
+  :click-4="{ x: 352 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-3xl">📜</span></div>
+
+</div>
+
+<div v-click="4" class="mt-24 text-xl opacity-70 text-center">
+
+Extract the data. Transform it. Load it somewhere useful.
 
 </div>
 
 <!--
-- Data quality skepticism: validate everything; trust nothing from the third party
-- Swappable replacement: match existing behavior exactly so rollback is easy - don't "improve" things during the migration
-- Clear source of truth: define which system owns which data element
-- Observability first: extensive logging, alerts on failures - you need to see what's happening in production
-- Idempotent operations: handle duplicates gracefully - at-least-once delivery means you WILL see duplicates
+- Quick reset: define ETL before we talk about the principles
+- Extract: pull from a source system (API, DB, file)
+- Transform: clean, reshape, enrich — match the shape the destination wants
+- Load: write into the destination system
+- The doc flowing through is our mental model for the rest of Step 3
+-->
+
+---
+layout: center
+clicks: 2
+---
+
+# Our ETL
+
+<div class="flex items-center justify-center gap-3 mt-10 text-lg relative">
+
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">SaaS Tool</div>
+<div class="flex items-center justify-center">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div v-click="1" v-motion :initial="{ opacity: 0, scale: 0.6 }" :enter="{ opacity: 1, scale: 1 }" class="border border-amber-500/50 rounded-xl p-3 bg-amber-900/10">
+<div class="text-xs uppercase tracking-wider text-amber-400 text-center mb-2">Our ETL</div>
+<div class="flex items-center gap-1">
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Extract</div>
+</div>
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Transform</div>
+</div>
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Load</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-purple-500/50 rounded-xl p-3 bg-purple-800/10">
+<div class="text-xs uppercase tracking-wider text-purple-400 text-center mb-2">Internal Platform</div>
+<div class="flex items-center justify-center">
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Parent App</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div v-click="2" class="mt-16 text-xl text-center">
+
+A small, focused pipeline bridging two systems.
+
+</div>
+
+<!--
+- This is the canonical diagram for the rest of Step 3
+- Servicer Acct on the left (still the SaaS tool as the source of truth for submissions)
+- Our ETL in the middle: three stages we own
+- Internal Platform on the right: where decisions now happen
+- Every principle slide decorates this same diagram
+-->
+
+---
+layout: center
+clicks: 4
+---
+
+# <span class="no-clip">🔍</span> Data Quality Skepticism
+
+<div class="flex items-center justify-center gap-3 mt-10 text-lg relative">
+
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">SaaS Tool</div>
+<div class="flex items-center justify-center">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-amber-500/50 rounded-xl p-3 bg-amber-900/10 relative">
+<div class="text-xs uppercase tracking-wider text-amber-400 text-center mb-2">Our ETL</div>
+<div class="flex items-center gap-1">
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Extract</div>
+</div>
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Transform</div>
+</div>
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Load</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-purple-500/50 rounded-xl p-3 bg-purple-800/10">
+<div class="text-xs uppercase tracking-wider text-purple-400 text-center mb-2">Internal Platform</div>
+<div class="flex items-center justify-center">
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Parent App</div>
+</div>
+</div>
+</div>
+
+<div
+  v-click="1" v-motion
+  :initial="{ x: -316, opacity: 0 }"
+  :enter="{ x: -316, opacity: 1 }"
+  :click-2="{ x: -36 }"
+  :click-3="{ x: 256 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-2xl">📜</span></div>
+
+<div
+  v-click="1" v-motion
+  :initial="{ x: -292, opacity: 0 }"
+  :enter="{ x: -292, opacity: 1 }"
+  :click-2="{ x: -12 }"
+  :click-3="{ x: 280 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-2xl">📜</span></div>
+
+<div
+  v-click="1" v-motion
+  :initial="{ x: -268, opacity: 0 }"
+  :enter="{ x: -268, opacity: 1 }"
+  :click-2="{ x: 12 }"
+  :click-3="{ x: 304 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-2xl">📜</span></div>
+
+<div
+  v-click="[1, 3]" v-motion
+  :initial="{ x: -244, opacity: 0 }"
+  :enter="{ x: -244, opacity: 1 }"
+  :click-2="{ x: 36 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-2xl">⚠️</span></div>
+
+<div
+  v-click="3" v-motion
+  :initial="{ x: 36, opacity: 0 }"
+  :enter="{ x: 36, opacity: 1 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-2xl">🚨</span></div>
+
+
+</div>
+
+<div v-click="4" class="absolute bottom-14 left-0 right-0 flex justify-center" style="pointer-events:none">
+<div class="inline-block border border-amber-500/50 rounded-lg px-6 py-2 bg-amber-900/20">
+<span class="text-amber-400 font-bold text-lg">Trust nothing from the third party. Validate at the boundary.</span>
+</div>
+</div>
+
+<!--
+- Dirty records flow in alongside clean ones — we assume the third party will hand us garbage
+- Transform does the validation: schema, required fields, referential sanity
+- Bad records are quarantined, not silently dropped — so we can review them
+- The point: be skeptical. Data problems upstream become data problems in production.
+-->
+
+---
+layout: center
+clicks: 6
+---
+
+# <span class="no-clip">🔄</span> Swappable Replacement
+
+<div class="relative">
+
+<div class="flex items-center justify-center gap-3 text-lg">
+
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">OLD: SaaS Sync</div>
+<div class="flex items-center justify-center">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Parent Co Acct</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">DCH</div>
+</div>
+
+</div>
+
+<div class="flex items-center justify-center gap-3 text-lg mt-16">
+
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-amber-500/50 rounded-xl p-3 bg-amber-900/10">
+<div class="text-xs uppercase tracking-wider text-amber-400 text-center mb-2">NEW: Our ETL</div>
+<div class="flex items-center justify-center">
+<div class="border border-amber-500/50 rounded-lg px-3 py-2 bg-amber-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Parent App</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">DCH</div>
+</div>
+
+</div>
+
+<!-- OLD row: 3 scrolls move left to right -->
+<div
+  v-click="[1, 4]" v-motion
+  :initial="{ x: -200 }"
+  :enter="{ x: -200 }"
+  :click-2="{ x: 0 }"
+  :click-3="{ x: 200 }"
+  :leave="{ x: 200 }"
+  class="absolute top-[112px] left-0 right-0 flex justify-center"
+><span class="text-xl">📜</span><span class="text-xl -ml-2">📜</span><span class="text-xl -ml-2">📜</span></div>
+
+<!-- OLD row: checkmarks/x return right to left -->
+<div
+  v-click="4" v-motion
+  :initial="{ x: 200 }"
+  :enter="{ x: 200 }"
+  :click-5="{ x: 0 }"
+  :click-6="{ x: -200 }"
+  class="absolute top-[112px] left-0 right-0 flex justify-center"
+><span class="text-lg">✅</span><span class="text-lg -ml-1">✅</span><span class="text-lg -ml-1">❌</span></div>
+
+<!-- NEW row: 3 scrolls move left to right -->
+<div
+  v-click="[1, 4]" v-motion
+  :initial="{ x: -200 }"
+  :enter="{ x: -200 }"
+  :click-2="{ x: 0 }"
+  :click-3="{ x: 200 }"
+  :leave="{ x: 200 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-xl">📜</span><span class="text-xl -ml-2">📜</span><span class="text-xl -ml-2">📜</span></div>
+
+<!-- NEW row: checkmarks/x return right to left -->
+<div
+  v-click="4" v-motion
+  :initial="{ x: 200 }"
+  :enter="{ x: 200 }"
+  :click-5="{ x: 0 }"
+  :click-6="{ x: -200 }"
+  class="absolute -bottom-10 left-0 right-0 flex justify-center"
+><span class="text-lg">✅</span><span class="text-lg -ml-1">✅</span><span class="text-lg -ml-1">❌</span></div>
+
+</div>
+
+<!--
+- Start with the old path lit up — this is what users already trust
+- Drop the new path in below: same endpoints, different middle
+- Tokens flow through both paths identically — from the outside, nothing changed
+- Why this matters: rollback stays cheap, and users don't need retraining
+-->
+
+---
+layout: center
+clicks: 3
+---
+
+# <span class="no-clip">📌</span> Clear Source of Truth
+
+<div class="flex items-center justify-center gap-3 mt-10 text-lg relative">
+
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10 relative">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">SaaS Tool</div>
+<div class="flex items-center justify-center">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+</div>
+<div v-click="1" class="absolute -bottom-10 left-0 right-0 flex justify-center">
+<div v-motion :initial="{ opacity: 0, y: -8 }" :enter="{ opacity: 1, y: 0 }" class="whitespace-nowrap text-[11px] font-bold text-cyan-400 bg-cyan-900/30 border border-cyan-500/40 rounded px-2 py-0.5">📌 Owns: submissions</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-amber-500/50 rounded-xl p-3 bg-amber-900/10">
+<div class="text-xs uppercase tracking-wider text-amber-400 text-center mb-2">Our ETL</div>
+<div class="flex items-center gap-1">
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Extract</div>
+</div>
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Transform</div>
+</div>
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Load</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-purple-500/50 rounded-xl p-3 bg-purple-800/10 relative">
+<div class="text-xs uppercase tracking-wider text-purple-400 text-center mb-2">Internal</div>
+<div class="flex items-center justify-center">
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Parent App</div>
+</div>
+</div>
+<div v-click="2" class="absolute -bottom-10 left-0 right-0 flex justify-center">
+<div v-motion :initial="{ opacity: 0, y: -8 }" :enter="{ opacity: 1, y: 0 }" class="whitespace-nowrap text-[11px] font-bold text-cyan-400 bg-cyan-900/30 border border-cyan-500/40 rounded px-2 py-0.5">📌 Owns: decisions</div>
+</div>
+</div>
+
+</div>
+
+<div v-click="3" class="absolute bottom-14 left-0 right-0 flex justify-center" style="pointer-events:none">
+<div class="inline-block border border-amber-500/50 rounded-lg px-6 py-2 bg-amber-900/20">
+<span class="text-amber-400 font-bold text-lg">One system owns each fact. Everyone else is a reader.</span>
+</div>
+</div>
+
+<!--
+- Submissions live in the SaaS Servicer Acct — it's the record of truth for intake
+- Decisions live in the Internal Parent App — it's the record of truth for outcomes
+- Our ETL is just a conduit. It mustn't invent data or become a 3rd owner.
+- When sync fails, you know exactly which system to trust
+-->
+
+---
+layout: center
+clicks: 4
+---
+
+# <span class="no-clip">👁️</span> Observability First
+
+<div class="flex items-center justify-center gap-3 mt-10 text-lg relative">
+
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">SaaS Tool</div>
+<div class="flex items-center justify-center">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-amber-500/50 rounded-xl p-3 bg-amber-900/10 relative">
+<div class="text-xs uppercase tracking-wider text-amber-400 text-center mb-2">Our ETL</div>
+<div class="flex items-center gap-1">
+
+<div class="relative">
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Extract</div>
+</div>
+<div v-click="1" v-motion :initial="{ opacity: 0, y: -8 }" :enter="{ opacity: 1, y: 0, transition: { delay: 0 } }" class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xl">🪵</div>
+</div>
+
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+
+<div class="relative">
+<div v-click="2" class="absolute -inset-1 border-2 border-red-500 rounded-lg animate-pulse" style="pointer-events:none"></div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Transform</div>
+</div>
+<div v-click="1" v-motion :initial="{ opacity: 0, y: -8 }" :enter="{ opacity: 1, y: 0, transition: { delay: 150 } }" class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xl">🪵</div>
+<div v-click="3" v-motion :initial="{ opacity: 0, y: 20 }" :enter="{ opacity: 1, y: -28 }" class="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] font-bold text-red-400 bg-red-900 border border-red-500 rounded-full px-2 py-0.5">🚨 Alert</div>
+</div>
+
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+
+<div class="relative">
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center">
+<div class="font-bold text-xs">Load</div>
+</div>
+<div v-click="1" v-motion :initial="{ opacity: 0, y: -8 }" :enter="{ opacity: 1, y: 0, transition: { delay: 300 } }" class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xl">🪵</div>
+</div>
+
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-purple-500/50 rounded-xl p-3 bg-purple-800/10">
+<div class="text-xs uppercase tracking-wider text-purple-400 text-center mb-2">Internal</div>
+<div class="flex items-center justify-center">
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Parent App</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div v-click="4" class="absolute bottom-14 left-0 right-0 flex justify-center" style="pointer-events:none">
+<div class="inline-block border border-amber-500/50 rounded-lg px-6 py-2 bg-amber-900/20">
+<span class="text-amber-400 font-bold text-lg">Log everything. Alert on what matters. You can't fix what you can't see.</span>
+</div>
+</div>
+
+<!--
+- Click 1: log sinks fan out under every stage — every meaningful step gets a log line
+- Click 2: simulate a failure at Transform — the box pulses red
+- Click 3: an alert fires — because the team hadn't invested in metrics, logs + alerts were the stack
+- Click 4: you can't fix what you can't see
+-->
+
+---
+layout: center
+clicks: 5
+---
+
+# <span class="no-clip">🔁</span> Idempotent Operations
+
+<div class="flex items-center justify-center gap-3 mt-10 text-lg relative">
+
+<div class="border border-red-500/50 rounded-xl p-3 bg-red-900/10">
+<div class="text-xs uppercase tracking-wider text-red-400 text-center mb-2">SaaS Tool</div>
+<div class="flex items-center justify-center">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Servicer Acct</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-amber-500/50 rounded-xl p-3 bg-amber-900/10">
+<div class="text-xs uppercase tracking-wider text-amber-400 text-center mb-2">Our ETL</div>
+<div class="flex items-center gap-1">
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center relative">
+<div class="font-bold text-xs">Extract</div>
+<div v-click="1" v-motion :initial="{ opacity: 0, scale: 0.5 }" :enter="{ opacity: 1, scale: 1 }" class="absolute -top-3 -right-3 text-base">💥</div>
+</div>
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center relative">
+<div class="font-bold text-xs">Transform</div>
+<div v-click="1" v-motion :initial="{ opacity: 0, scale: 0.5 }" :enter="{ opacity: 1, scale: 1, transition: { delay: 100 } }" class="absolute -top-3 -right-3 text-base">💥</div>
+</div>
+<div class="text-xs opacity-50 w-3 text-center">→</div>
+<div class="border border-amber-500/50 rounded-lg px-2 py-2 bg-amber-900/40 text-center w-20 h-14 flex items-center justify-center relative">
+<div class="font-bold text-xs">Load</div>
+<div v-click="1" v-motion :initial="{ opacity: 0, scale: 0.5 }" :enter="{ opacity: 1, scale: 1, transition: { delay: 200 } }" class="absolute -top-3 -right-3 text-base">💥</div>
+</div>
+</div>
+</div>
+
+<div class="text-xl w-8 text-center">→</div>
+
+<div class="border border-purple-500/50 rounded-xl p-3 bg-purple-800/10">
+<div class="text-xs uppercase tracking-wider text-purple-400 text-center mb-2">Internal</div>
+<div class="flex items-center justify-center">
+<div class="border border-purple-500/50 rounded-lg px-3 py-2 bg-purple-900/40 text-center w-32 h-14 flex items-center justify-center">
+<div class="font-bold text-sm">Parent App</div>
+</div>
+</div>
+</div>
+
+<!-- Click 1: failures can happen anywhere (💥 shown above) -->
+
+<!-- Click 2: "Need safe retries" message -->
+<div v-click="[2, 3]" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0 }" :leave="{ opacity: 0 }" class="absolute -bottom-16 left-0 right-0 flex justify-center">
+<span class="text-lg font-bold text-red-400">Failures happen → need to retry</span>
+</div>
+
+<!-- Click 3-4: First record (top) flows through and makes it to end -->
+<div
+  v-click="[3, 5]" v-motion
+  :initial="{ x: -220 }"
+  :enter="{ x: -220 }"
+  :click-4="{ x: 0 }"
+  :click-5="{ x: 220 }"
+  :leave="{ x: 220 }"
+  class="absolute -bottom-20 left-0 right-0 flex justify-center"
+><span class="text-lg">📜 #1</span></div>
+
+<!-- Click 3-4: Second record (bottom) - duplicate, stops at center -->
+<div
+  v-click="[3, 5]" v-motion
+  :initial="{ x: -220 }"
+  :enter="{ x: -220 }"
+  :click-4="{ x: 0 }"
+  :click-5="{ x: 0 }"
+  :leave="{ x: 0 }"
+  class="absolute -bottom-28 left-0 right-0 flex justify-center"
+><span class="text-lg">📜 #2</span></div>
+
+<!-- Click 5: First record ingested successfully -->
+<div
+  v-click="5" v-motion
+  :initial="{ opacity: 0, x: 220 }"
+  :enter="{ opacity: 1, x: 220 }"
+  class="absolute -bottom-20 left-0 right-0 flex justify-center"
+><span class="text-lg">✅ 📜 #1</span></div>
+
+<!-- Click 5: Second record dropped as duplicate -->
+<div
+  v-click="5" v-motion
+  :initial="{ opacity: 0, x: 0 }"
+  :enter="{ opacity: 1, x: 0 }"
+  class="absolute -bottom-28 left-0 right-0 flex justify-center"
+><span class="text-lg">🚫 <span class="line-through opacity-50">📜 #2</span></span></div>
+
+</div>
+
+<!--
+- Failures can happen at any stage — network issues, timeouts, bugs
+- We need to be able to retry without fear of duplicates or corruption
+- Idempotent operations: same input, same output, no side effects on retry
+- At-least-once + idempotent loads is the sweet spot for low-volume ETLs
 -->
 
 ---
@@ -1203,7 +1783,7 @@ Dramatic transition - pause here, let it build.
 layout: center
 ---
 
-# <span class="tag">Part 4:</span> The Plot Twist
+# <span class="tag">Part 2:</span> The Plot Twist
 
 ## The 380K Document Problem
 
