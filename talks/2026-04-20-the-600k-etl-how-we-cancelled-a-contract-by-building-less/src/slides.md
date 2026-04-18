@@ -81,10 +81,9 @@ image: headshot.jpg
 </div>
 
 ---
-layout: center
+layout: image
+image: /raise-hands.jpg
 ---
-
-TODO: picture of raising hands
 
 <!--
 - "Raise your hand if you've ever paid for a gym membership you didn't use."
@@ -124,11 +123,28 @@ layout: center
 
 # Startup → Scale → Bloat
 
-```mermaid {scale: 0.8}
-graph LR
-    A["Startup<br/>SaaS tools = speed"] --> B["Scale<br/>More subscriptions"]
-    B --> C["Bloat<br/>$1M+/year in SaaS"]
-```
+<div class="flex items-center justify-center gap-4 text-lg mt-8">
+
+<div class="border border-green-500/50 rounded-xl px-6 py-4 bg-green-900/30 text-center w-44">
+<div class="font-bold text-lg text-green-400">Startup</div>
+<div class="text-sm opacity-70 mt-1">SaaS tools = speed</div>
+</div>
+
+<div class="text-2xl text-gray-400">→</div>
+
+<div class="border border-amber-500/50 rounded-xl px-6 py-4 bg-amber-900/30 text-center w-44">
+<div class="font-bold text-lg text-amber-400">Scale</div>
+<div class="text-sm opacity-70 mt-1">More subscriptions</div>
+</div>
+
+<div class="text-2xl text-gray-400">→</div>
+
+<div class="border border-red-500/50 rounded-xl px-6 py-4 bg-red-900/30 text-center w-44">
+<div class="font-bold text-lg text-red-400">Bloat</div>
+<div class="text-sm opacity-70 mt-1">$1M+/year in SaaS</div>
+</div>
+
+</div>
 
 <!--
 Now they've had several years of stable growth, they're dealing with bloat
@@ -1065,10 +1081,35 @@ layout: center
 
 # Local DX Investment
 
-```text
-Production:     API call → 15 min → response → process
-Development:    Local file → instant → cached response → process
-```
+<div class="flex flex-col gap-6 mt-8">
+
+<div class="border border-red-500/50 rounded-xl px-6 py-4 bg-red-900/20">
+<div class="text-xs uppercase tracking-wider text-red-400 mb-3">Production</div>
+<div class="flex items-center justify-center gap-3">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-sm">API call</div>
+<div class="text-gray-400">→</div>
+<div class="border border-red-500/50 rounded-lg px-4 py-2 bg-red-900/40 text-sm font-bold text-red-400">⏱ 15 min</div>
+<div class="text-gray-400">→</div>
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-sm">response</div>
+<div class="text-gray-400">→</div>
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-sm">process</div>
+</div>
+</div>
+
+<div class="border border-green-500/50 rounded-xl px-6 py-4 bg-green-900/20">
+<div class="text-xs uppercase tracking-wider text-green-400 mb-3">Development</div>
+<div class="flex items-center justify-center gap-3">
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-sm">Local file</div>
+<div class="text-gray-400">→</div>
+<div class="border border-green-500/50 rounded-lg px-4 py-2 bg-green-900/40 text-sm font-bold text-green-400">⚡ instant</div>
+<div class="text-gray-400">→</div>
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-sm">cached response</div>
+<div class="text-gray-400">→</div>
+<div class="border border-blue-500/50 rounded-lg px-3 py-2 bg-blue-900/40 text-sm">process</div>
+</div>
+</div>
+
+</div>
 
 <div v-click class="mt-5 text-xl">
 
@@ -1090,21 +1131,43 @@ layout: center
 
 # "Get the bones working before you add the muscle."
 
-TODO: consider a visual showing skeleton system -> integrated system timeline progression
+<div class="relative mt-6">
 
-<div>
+<!-- The skeleton: basic integration -->
+<div class="flex items-center justify-center gap-4">
+<div class="border border-blue-500/50 rounded-xl px-5 py-3 bg-blue-900/30 text-center w-28">
+<div class="font-bold text-blue-400">Source</div>
+<div class="text-xs opacity-60">API</div>
+</div>
+<div class="text-gray-400 text-xl">→</div>
+<div class="border border-purple-500/50 rounded-xl px-5 py-3 bg-purple-900/30 text-center w-28">
+<div class="font-bold text-purple-400">ETL</div>
+<div class="text-xs opacity-60">Transform</div>
+</div>
+<div class="text-gray-400 text-xl">→</div>
+<div class="border border-green-500/50 rounded-xl px-5 py-3 bg-green-900/30 text-center w-28">
+<div class="font-bold text-green-400">Target</div>
+<div class="text-xs opacity-60">System</div>
+</div>
+</div>
 
-<v-clicks>
+<!-- The muscle: added after click -->
+<div v-click class="mt-6">
+<div class="flex items-center justify-center gap-3 mb-4">
+<div class="border border-amber-500/40 rounded-lg px-3 py-2 bg-amber-900/20 text-xs text-amber-400">🔄 Retry Logic</div>
+<div class="border border-cyan-500/40 rounded-lg px-3 py-2 bg-cyan-900/20 text-xs text-cyan-400">☁️ S3 Caching</div>
+<div class="border border-pink-500/40 rounded-lg px-3 py-2 bg-pink-900/20 text-xs text-pink-400">📊 Monitoring</div>
+</div>
+<div class="flex items-center justify-center gap-3">
+<div class="border border-red-500/40 rounded-lg px-3 py-2 bg-red-900/20 text-xs text-red-400">⚠️ Edge Cases</div>
+<div class="border border-indigo-500/40 rounded-lg px-3 py-2 bg-indigo-900/20 text-xs text-indigo-400">🔐 Auth Handling</div>
+<div class="border border-teal-500/40 rounded-lg px-3 py-2 bg-teal-900/20 text-xs text-teal-400">📝 Audit Logs</div>
+</div>
+</div>
 
-🦴 Skeleton first
-
-🔗 Integrate early
-
-👀 Demo early
-
-🐛 Find issues early
-
-</v-clicks>
+<div v-click class="text-center mt-6 text-sm opacity-70">
+🦴 Ship the skeleton → 💪 Add the muscle
+</div>
 
 </div>
 
@@ -1342,7 +1405,6 @@ clicks: 4
   :enter="{ x: 36, opacity: 1 }"
   class="absolute -bottom-10 left-0 right-0 flex justify-center"
 ><span class="text-2xl">🚨</span></div>
-
 
 </div>
 
@@ -1727,32 +1789,6 @@ clicks: 5
 layout: center
 ---
 
-# Step 4: The Data Reality Check
-
----
-layout: center
----
-
-# "We were 'told' many things about the data."
-
-<div v-click class="mt-5 text-2xl">
-
-"Then we actually looked at it."
-
-</div>
-
-<!--
-- Check live data regularly, not just at milestones - surprises hide in production data
-- Edge cases nobody considered? Present.
-- Things everyone swore were edge cases? Not actually present.
-- Assumptions from stakeholders do NOT equal reality in the database
-- Drive home: the only way to know your data is to look at it yourself, repeatedly
--->
-
----
-layout: center
----
-
 # The Launch
 
 <div>
@@ -1821,9 +1857,33 @@ layout: center
 
 # The Mapping Problem
 
-TODO: diagram showing the mapping challenge (old system entities with no clean IDs -> fuzzy matching via addresses, geo-coordinates, property IDs -> new system entities)
+<div class="flex items-center justify-center gap-8 mt-6">
 
-<div v-click class="mt-5 text-xl">
+<div class="border border-red-500/50 rounded-xl px-5 py-4 bg-red-900/20">
+<div class="text-xs uppercase tracking-wider text-red-400 mb-3">Old System</div>
+<div class="text-sm font-mono space-y-2">
+<div class="bg-red-900/30 px-2 py-1 rounded">"123 Main Street"</div>
+<div class="bg-red-900/30 px-2 py-1 rounded">"456 Oak Ave, Ste 100"</div>
+</div>
+</div>
+
+<div class="flex flex-col items-center justify-center gap-2">
+<div class="text-gray-400">→</div>
+<div class="text-2xl">🤔</div>
+<div class="text-gray-400">→</div>
+</div>
+
+<div class="border border-green-500/50 rounded-xl px-5 py-4 bg-green-900/20">
+<div class="text-xs uppercase tracking-wider text-green-400 mb-3">New System</div>
+<div class="text-sm font-mono space-y-2">
+<div class="bg-green-900/30 px-2 py-1 rounded">"123 Main <span class="text-amber-400">St.</span>"</div>
+<div class="bg-green-900/30 px-2 py-1 rounded">"456 Oak Ave<span class="text-amber-400">nue</span>, <span class="text-amber-400">Suite</span> 10<span class="text-red-400">1</span>"</div>
+</div>
+</div>
+
+</div>
+
+<div v-click class="mt-6 text-xl text-center">
 
 No clean IDs. Fuzzy matching required.
 
@@ -1867,27 +1927,45 @@ layout: center
 
 # The Performance Journey
 
-TODO: visual showing performance progression (1 week naive -> rate limits with multi-threading -> hours with S3-to-S3 copy)
+<div class="flex items-center justify-center gap-4 mt-8">
 
-<div>
+<div class="border border-red-500/50 rounded-xl px-5 py-4 bg-red-900/20 text-center w-40">
+<div class="text-3xl mb-2">🐌</div>
+<div class="font-bold text-red-400">Naive</div>
+<div class="text-sm opacity-70 mt-1">~1 week</div>
+</div>
 
-<v-clicks>
+<v-click>
+<div class="text-gray-400 text-xl">→</div>
+</v-click>
 
-<div class="text-2xl mb-5">
+<v-click>
+<div class="border border-amber-500/50 rounded-xl px-5 py-4 bg-amber-900/20 text-center w-40">
+<div class="text-3xl mb-2">🧵</div>
+<div class="font-bold text-amber-400">Multi-thread</div>
+<div class="text-sm opacity-70 mt-1">Rate limited 🚫</div>
+</div>
+</v-click>
 
-**Multi-threading** → rate limits
+<v-click>
+<div class="text-gray-400 text-xl">→</div>
+</v-click>
+
+<v-click>
+<div class="border border-green-500/50 rounded-xl px-5 py-4 bg-green-900/20 text-center w-40">
+<div class="text-3xl mb-2">⚡</div>
+<div class="font-bold text-green-400">S3-to-S3</div>
+<div class="text-sm opacity-70 mt-1">Hours</div>
+</div>
+</v-click>
 
 </div>
 
-<div class="text-2xl mb-5">
-
-**S3-to-S3 copy** → **hours instead of a week** ⚡
-
+<v-click>
+<div class="text-center mt-8 text-xl">
+"Wait... the documents are <span class="text-cyan-400">already in S3</span>. Why download and re-upload?"
 </div>
-
-</v-clicks>
-
-</div>
+</v-click>
 
 <!--
 - First attempt: multi-threading. Hit rate limits immediately - document service wasn't built for this scale.
@@ -1958,7 +2036,7 @@ layout: center
 layout: center
 ---
 
-# <span class="tag">Part 5:</span> Takeaways
+# <span class="tag">Part 3:</span> Takeaways
 
 ## What You Can Steal
 
@@ -1985,24 +2063,6 @@ layout: center
 🦴 **Bare Bones Before Bells and Whistles** - skeleton first, features second
 
 </v-clicks>
-
-</div>
-
----
-layout: center
----
-
-# "The most valuable software we shipped that year wasn't a new feature."
-
-<div v-click class="mt-5 text-2xl">
-
-"It was the ability to **delete an entire system**."
-
-</div>
-
-<div v-click class="mt-8 text-xl opacity-70">
-
-Sometimes engineering excellence isn't about building more. It's about understanding exactly what you need, building exactly that, and having the discipline to stop there.
 
 </div>
 
